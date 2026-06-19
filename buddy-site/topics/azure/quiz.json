@@ -1,0 +1,209 @@
+{
+  "pick": 6,
+  "questions": [
+    {
+      "answer": 2,
+      "sk": { "q": "Kam patria heslá a connection stringy?",
+        "options": [
+          "Natvrdo zapísané priamo v kóde appky",
+          "Do appsettings.json commitnutého v gite",
+          "Do Key Vaultu, odkiaľ ich appka načíta",
+          "Do komentára vedľa metódy, čo ich číta"],
+        "explain": "Tajomstvá nepatria do kódu ani do gitu — patria do Key Vault, odkiaľ si ich appka načíta." },
+      "en": { "q": "Where do passwords and connection strings belong?",
+        "options": [
+          "Hardcoded directly inside the app code",
+          "In an appsettings.json committed to git",
+          "In Key Vault, where the app loads them",
+          "In a comment next to the method using them"],
+        "explain": "Secrets don't belong in code or git — they belong in Key Vault, where the app loads them." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Čo je feature flag?",
+        "options": [
+          "Prepínač funkcie bez nasadenia nového kódu",
+          "Cenová úroveň pridelená danému resourcu",
+          "Typ databázy na ukladanie nastavení appky",
+          "Číslo verzie naposledy nasadenej aplikácie"],
+        "explain": "Feature flag zapína/vypína už nasadenú funkciu bez toho, aby si nasadzoval nový kód." },
+      "en": { "q": "What is a feature flag?",
+        "options": [
+          "A switch for a feature without deploying code",
+          "A pricing level assigned to a given resource",
+          "A database type for storing the app settings",
+          "The version number of the last deployed app"],
+        "explain": "A feature flag turns an already-deployed feature on/off without you deploying new code." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Na čo slúži Service Bus?",
+        "options": [
+          "Na ukladanie veľkých súborov a blob dát",
+          "Na posielanie správ medzi službami",
+          "Na uchovávanie tajomstiev a kľúčov",
+          "Na fakturáciu prevádzkovaných resources"],
+        "explain": "Service Bus je spoľahlivé posielanie správ medzi službami (topics, queues, subscriptions)." },
+      "en": { "q": "What is Service Bus for?",
+        "options": [
+          "For storing large files and blob data",
+          "For sending messages between services",
+          "For keeping secrets and security keys",
+          "For billing the resources being run"],
+        "explain": "Service Bus is reliable messaging between services (topics, queues, subscriptions)." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Flag je v {environment}-settings-config zapnutý, no funkcia sa neukáže. Čo najskôr chýba?",
+        "options": [
+          "Treba reštartovať celý príslušný Storage Account",
+          "Flag bolo treba uložiť priamo do Key Vaultu appky",
+          "Príslušná resource group má vyčerpaný svoj limit",
+          "V enume FeatureFlags rovnako pomenovaná hodnota"],
+        "explain": "Hodnota v backendovom enume FeatureFlags sa musí presne zhodovať s názvom flagu, inak ho kód nenájde." },
+      "en": { "q": "A flag is on in {environment}-settings-config but the feature won't show. What's most likely missing?",
+        "options": [
+          "The whole relevant Storage Account needs a restart",
+          "The flag should have been put into the app Key Vault",
+          "The app's resource group has used up its whole limit",
+          "An identically named FeatureFlags enum value"],
+        "explain": "The backend FeatureFlags enum value must match the flag name exactly, or the code won't find it." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Prečo dávame súvisiace resources do jednej resource group?",
+        "options": [
+          "Aby každý z nich dostal vlastnú samostatnú subscription",
+          "Aby sa všetky automaticky prepli na lacný free tier",
+          "Aby mali spoločný životný cyklus a prehľad nákladov",
+          "Aby každý z nich bežal v čo najodlišnejšom regióne"],
+        "explain": "Skupina dáva spoločný životný cyklus (nasadiť/zmazať naraz), prehľad nákladov a správu práv." },
+      "en": { "q": "Why do we put related resources into one resource group?",
+        "options": [
+          "So each one of them gets its own separate subscription",
+          "So everything automatically flips to the cheap free tier",
+          "So they share a lifecycle and a cost overview",
+          "So each one of them runs in a different world region"],
+        "explain": "A group gives a shared lifecycle (deploy/delete together), a cost overview, and access management." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Akcia v Azure zlyhá s hláškou o kvóte. Čo to najskôr znamená?",
+        "options": [
+          "Prekročil sa limit subscription na danú akciu",
+          "V kóde appky je určite syntaktická chyba",
+          "Key Vault zabudol uložiť jedno z tajomstiev",
+          "Feature flag dostal nesprávny názov v enume"],
+        "explain": "Subscription má limity (quotas); po ich prekročení Azure nepovolí napr. vytvoriť či škálovať resource." },
+      "en": { "q": "An Azure action fails with a quota message. What does that most likely mean?",
+        "options": [
+          "The subscription's limit for that action is hit",
+          "There is surely a syntax error in the app code",
+          "Key Vault forgot to store one of the secrets",
+          "A feature flag got a wrong name in the enum"],
+        "explain": "A subscription has limits (quotas); once exceeded, Azure won't let you e.g. create or scale a resource." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Z čoho sa skladá názov feature flagu podľa našej konvencie?",
+        "options": [
+          "Z čísla firmy a dátumu nasadenia funkcie",
+          "Z oblasti (area) a názvu funkcie (feature)",
+          "Z regiónu Azure a cenovej úrovne resourcu",
+          "Z mena vývojára a poradového čísla flagu"],
+        "explain": "Konvencia je area + feature, napr. MyDocuments + ReceivedProformaInvoice = MyDocumentsReceivedProformaInvoice." },
+      "en": { "q": "What does a feature flag name consist of by our convention?",
+        "options": [
+          "A company number and the deployment date",
+          "An area and the name of the feature itself",
+          "An Azure region and the resource's price tier",
+          "A developer's name and the flag's order number"],
+        "explain": "The convention is area + feature, e.g. MyDocuments + ReceivedProformaInvoice = MyDocumentsReceivedProformaInvoice." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo je Azure?",
+        "options": [
+          "Lokálny server stojaci v našej kancelárii",
+          "Knižnica na písanie unit testov v jazyku C#",
+          "Nástroj na vetvenie a merge zmien v gite",
+          "Cloudový systém na prevádzku resources"],
+        "explain": "Azure je cloud od Microsoftu — prenajímaš si v ňom resources (databáza, úložisko, …), nehostíš ich sám." },
+      "en": { "q": "What is Azure?",
+        "options": [
+          "A local server standing in our own office",
+          "A library for writing unit tests in C#",
+          "A tool for branching and merging in git",
+          "A cloud system for running resources"],
+        "explain": "Azure is Microsoft's cloud — you rent resources in it (database, storage, …) instead of hosting them yourself." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Na čo býva u nás feature flag zvyčajne podmienený?",
+        "options": [
+          "Na región, v ktorom appka fyzicky beží",
+          "Na cenovú úroveň prideleného resourcu",
+          "Na companyId, e-mail alebo ich kombináciu",
+          "Na počet otvorených work itemov v sprinte"],
+        "explain": "Flag býva podmienený na companyId, e-mail alebo ich kombináciu — funkciu tak vidí len daná firma/user." },
+      "en": { "q": "What is a feature flag usually conditioned on at KROS?",
+        "options": [
+          "On the region where the app physically runs",
+          "On the price tier of the assigned resource",
+          "On companyId, e-mail, or a combination of them",
+          "On the number of open work items in a sprint"],
+        "explain": "A flag is conditioned on companyId, e-mail, or a combination — so only that company/user sees the feature." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Ktorá úroveň resourcu je vhodná na učenie a skúšanie?",
+        "options": [
+          "Najlacnejšia free alebo basic úroveň",
+          "Premium tier s autoscale a SLA garanciou",
+          "Dedikovaný, stále bežiaci výkonný plán",
+          "Najdrahšia dostupná produkčná konfigurácia"],
+        "explain": "Na pokusy stačí najlacnejší free/basic tier; drahé škálované tiery sú pre produkčnú záťaž." },
+      "en": { "q": "Which resource tier is right for learning and experimenting?",
+        "options": [
+          "The cheapest free or basic tier available",
+          "A Premium tier with autoscale and an SLA",
+          "A dedicated, always-running powerful plan",
+          "The most expensive production configuration"],
+        "explain": "For experiments the cheapest free/basic tier is enough; pricey scaled tiers are for production load." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Na čo slúži Storage Account?",
+        "options": [
+          "Na posielanie správ medzi mikroslužbami",
+          "Na ukladanie súborov, blobov a dát",
+          "Na uchovávanie hesiel a certifikátov",
+          "Na centrálnu správu feature flagov"],
+        "explain": "Storage Account je úložisko na súbory a neštruktúrované dáta — blob, queue, table." },
+      "en": { "q": "What is a Storage Account for?",
+        "options": [
+          "For sending messages between microservices",
+          "For storing files, blobs, and raw data",
+          "For keeping passwords and certificates",
+          "For centrally managing the feature flags"],
+        "explain": "A Storage Account is storage for files and unstructured data — blob, queue, table." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Prečo používame feature flags?",
+        "options": [
+          "Aby sa databáza appky automaticky zálohovala",
+          "Aby všetky resources spadli pod jednu skupinu",
+          "Aby sa znížil počet potrebných commitov v gite",
+          "Aby sme funkciu skryli pred časťou používateľov"],
+        "explain": "Flagom skryješ/zapneš funkciu pre časť userov, bezpečne ju vypneš pri probléme a robíš postupný rollout." },
+      "en": { "q": "Why do we use feature flags?",
+        "options": [
+          "So the app's database gets backed up on its own",
+          "So all resources fall under one resource group",
+          "So the number of needed git commits goes down",
+          "So we can hide a feature from a subset of users"],
+        "explain": "A flag hides/enables a feature for a subset of users, lets you switch it off safely, and do gradual rollout." }
+    }
+  ]
+}

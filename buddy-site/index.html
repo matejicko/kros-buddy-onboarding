@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buddy</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <script>
+    /* Apply theme before first paint to avoid a flash of the wrong theme. */
+    (function () {
+      try {
+        var t = localStorage.getItem("buddy.theme");
+        if (t !== "light" && t !== "dark") {
+          t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span>🤝</span><span data-i18n="site.title">Buddy</span></a>
+    <div class="header-controls">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Light / dark theme">🌙</button>
+      <nav class="lang-toggle" id="langToggle">
+        <button data-lang="sk">SK</button><span>|</span><button data-lang="en">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 data-i18n="hub.hero.title"></h1>
+      <p class="tagline" data-i18n="hub.hero.tagline"></p>
+      <div class="progress on-light" style="max-width:320px"><span id="overallBar"></span></div>
+      <p class="muted" id="overallText" style="color:#fff;opacity:.9"></p>
+      <a class="btn secondary" id="resumeBtn" href="#" style="background:#fff"></a>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 data-i18n="hub.topics"></h2>
+    <div class="card-grid" id="topicGrid"></div>
+    <h2 data-i18n="hub.badges"></h2>
+    <div class="badges" id="badgeRow"></div>
+  </main>
+
+  <footer class="site-footer">
+    <span data-i18n="footer.help"></span>
+    <span>
+      <label><input type="checkbox" id="animToggle" checked /> <span data-i18n="footer.anim"></span></label>
+      &nbsp;·&nbsp;
+      <button class="linklike" id="resetBtn" data-i18n="footer.reset"></button>
+    </span>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

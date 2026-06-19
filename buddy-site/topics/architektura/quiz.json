@@ -1,0 +1,243 @@
+{
+  "pick": 8,
+  "questions": [
+    {
+      "answer": 2,
+      "sk": { "q": "Čím sa modulárny monolit líši od mikroslužieb?",
+        "options": [
+          "Monolit má vždy viac databáz ako mikroslužby",
+          "Sú to v podstate len dva názvy pre to isté",
+          "Monolit je jeden deploy; mikroslužby samostatné procesy",
+          "Mikroslužby zásadne nesmú medzi sebou komunikovať po sieti"],
+        "explain": "Kľúčová je hranica nasadenia: monolit = jeden deploy s modulmi vnútri, mikroslužby = veľa samostatných deployov." },
+      "en": { "q": "How does a modular monolith differ from microservices?",
+        "options": [
+          "A monolith always has more databases than microservices",
+          "They are essentially just two names for the same thing",
+          "A monolith is one deploy; microservices are separate processes",
+          "Microservices fundamentally must not communicate over the network"],
+        "explain": "The key is the deployment boundary: a monolith is one deploy with modules inside; microservices are many separate deploys." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Malý tím začína produkt s neistými hranicami domén. Najrozumnejší štart?",
+        "options": [
+          "Hneď to rozbiť na desať samostatných mikroslužieb",
+          "Modulárny monolit, službu vytrhnúť až neskôr",
+          "Jeden veľký monolit bez akýchkoľvek hraníc",
+          "Spraviť z každej triedy samostatnú Azure Function"],
+        "explain": "Začať modulárnym monolitom a extrahovať služby podľa potreby; predčasné mikroslužby pridajú réžiu zadarmo." },
+      "en": { "q": "A small team starts a product with uncertain domain boundaries. Wisest start?",
+        "options": [
+          "Split it into ten separate microservices right away",
+          "A modular monolith, extract a service only later",
+          "One big monolith without any boundaries at all",
+          "Turn every single class into its own Azure Function"],
+        "explain": "Start with a modular monolith and extract services as needed; premature microservices add overhead for nothing." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Aká je typická CENA prechodu na mikroslužby?",
+        "options": [
+          "Distribuovaná zložitosť a dočasná nekonzistencia dát",
+          "Nedá sa už používať programovací jazyk C#",
+          "Nemôžeš mať viac ako jednu jedinú databázu",
+          "Stratíš možnosť nasadzovať jednotlivé časti samostatne"],
+        "explain": "Každá služba má vlastnú DB, takže dáta sú medzi nimi chvíľu nekonzistentné — odborne sa tento model volá 'eventual consistency' (časom sa zladia)." },
+      "en": { "q": "What is the typical COST of moving to microservices?",
+        "options": [
+          "Distributed complexity and temporary data inconsistency",
+          "You can no longer use the C# programming language",
+          "You can't have more than one single database",
+          "You lose the ability to deploy individual parts on their own"],
+        "explain": "Each service has its own DB, so data is briefly inconsistent across them — this model is formally called 'eventual consistency' (it reconciles over time)." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Ktoré tvrdenie o monorepe je správne?",
+        "options": [
+          "Monorepo automaticky znamená, že appka je monolit",
+          "V monorepe musí byť práve jedna nasaditeľná služba",
+          "Monorepo principiálne zakazuje zdieľané knižnice",
+          "Monorepo rieši uloženie kódu, nie spôsob behu"],
+        "explain": "Monorepo (ako je kód uložený) je nezávislé od architektúry behu — mikroslužby aj monolit môžu žiť v monorepe." },
+      "en": { "q": "Which statement about a monorepo is correct?",
+        "options": [
+          "A monorepo automatically means the app is a monolith",
+          "A monorepo must contain exactly one deployable service",
+          "A monorepo fundamentally forbids shared libraries",
+          "A monorepo is about storing code, not how it runs"],
+        "explain": "A monorepo (how code is stored) is independent of the runtime architecture — both microservices and a monolith can live in one." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Aká je hlavná výhoda monorepa pri zmene zdieľanej knižnice?",
+        "options": [
+          "Knižnicu už vôbec netreba samostatne testovať",
+          "Automaticky z nej vznikne samostatná mikroslužba",
+          "Knižnicu aj jej konzumenta zmeníš v jednom PR",
+          "Build je vždy rýchlejší než pri polyrepo prístupe"],
+        "explain": "Atomická zmena naprieč projektmi v jednom PR — bez čakania na vydanie NuGet balíka — je hlavné lákadlo." },
+      "en": { "q": "Main benefit of a monorepo when changing a shared library?",
+        "options": [
+          "The library no longer needs to be tested separately",
+          "It automatically turns into a separate microservice",
+          "You change the library and its consumer in one PR",
+          "The build is always faster than with a polyrepo approach"],
+        "explain": "An atomic change across projects in one PR — without waiting for a NuGet release — is the main draw." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Správu vložíš do Service Bus QUEUE, počúvajú traja consumeri. Koľkí ju spracujú?",
+        "options": [
+          "Všetci traja, každý dostane vlastnú kópiu",
+          "Práve jeden (fronta je point-to-point)",
+          "Žiadny, fronta správy iba dočasne uchováva",
+          "Závisí to od nastaveného počtu subscriptions"],
+        "explain": "Queue doručí správu práve jednému consumerovi (competing consumers). Kópiu pre každého rieši topic." },
+      "en": { "q": "You put a message in a Service Bus QUEUE; three consumers listen. How many process it?",
+        "options": [
+          "All three, each one receives its own copy",
+          "Exactly one (the queue is point-to-point)",
+          "None, the queue only stores messages temporarily",
+          "It depends on the configured number of subscriptions"],
+        "explain": "A queue delivers a message to exactly one consumer (competing consumers). A copy-per-receiver is a topic's job." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Udalosť má nezávisle spustiť fakturáciu, sklad aj notifikácie. Čo použiješ?",
+        "options": [
+          "Topic s tromi subscriptions",
+          "Jednu spoločnú queue pre všetkých troch",
+          "Synchrónne HTTP volanie na každú službu",
+          "Azure Function bez akéhokoľvek nastaveného triggeru"],
+        "explain": "Pub/sub cez topic + subscriptions — každá dostane vlastnú kópiu a odosielateľ o príjemcoch nemusí vedieť." },
+      "en": { "q": "An event should independently trigger invoicing, warehouse, and notifications. What do you use?",
+        "options": [
+          "A topic with three subscriptions",
+          "One shared queue for all three of them",
+          "A synchronous HTTP call to each service",
+          "An Azure Function without any configured trigger"],
+        "explain": "Pub/sub via a topic + subscriptions — each gets its own copy and the sender need not know the receivers." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Kedy je vhodnejšia asynchrónna komunikácia cez Service Bus než HTTP?",
+        "options": [
+          "Keď potrebuješ odpoveď v tej istej požiadavke",
+          "Vždy, pretože HTTP je už dávno zastarané",
+          "Nikdy, správy sú principiálne len pomalšie",
+          "Keď chceš oddeliť strany a zvládnuť špičky"],
+        "explain": "Async je o oddelení v čase a odolnosti. Keď potrebuješ okamžitú odpoveď, voľ synchrónne HTTP." },
+      "en": { "q": "When is async via a Service Bus preferable to HTTP?",
+        "options": [
+          "When you need a reply within the same request",
+          "Always, because HTTP has long been obsolete",
+          "Never, messages are fundamentally just slower",
+          "When you want to decouple parties and absorb spikes"],
+        "explain": "Async is about decoupling in time and resilience. When you need an immediate answer, use synchronous HTTP." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Na čo slúži dead-letter queue?",
+        "options": [
+          "Na výrazne rýchlejšie doručovanie správ",
+          "Na pravidelné zálohovanie celej databázy",
+          "Na správy nespracovateľné ani po pokusoch",
+          "Na šifrovanie citlivého obsahu jednotlivých správ"],
+        "explain": "Dead-letter zachytí 'problémové' správy, aby neblokovali frontu a dali sa neskôr preskúmať." },
+      "en": { "q": "What is a dead-letter queue for?",
+        "options": [
+          "For significantly faster message delivery",
+          "For regularly backing up the entire database",
+          "For messages unprocessable even after retries",
+          "For encrypting the sensitive contents of individual messages"],
+        "explain": "Dead-lettering captures 'problem' messages so they don't block the queue and can be inspected later." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Čím sa knižnica (.dll/NuGet) líši od ASP.NET služby?",
+        "options": [
+          "Knižnica je principiálne rýchlejšia než služba",
+          "Knižnica sama nebeží; služba je proces s endpointmi",
+          "Knižnica má vždy svoju vlastnú samostatnú databázu",
+          "Službu na rozdiel od knižnice nemožno nasadiť do Azure"],
+        "explain": "Knižnica nemá proces ani endpoint — spustí sa len tým, že ju použije nejaký bežiaci kód." },
+      "en": { "q": "How does a library (.dll/NuGet) differ from an ASP.NET service?",
+        "options": [
+          "A library is fundamentally faster than a service",
+          "A library doesn't run itself; a service is a process with endpoints",
+          "A library always has its own separate database",
+          "A service, unlike a library, can't be deployed to Azure"],
+        "explain": "A library has no process or endpoint — it only runs when some running code uses it." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Ktoré tvrdenie najlepšie vystihuje Azure Function?",
+        "options": [
+          "Spúšťa ju trigger a škáluje aj na nulu",
+          "Beží nepretržite ako bežný webový server",
+          "Je to knižnica, ktorú referencuješ z projektu",
+          "Musí byť spustená vždy spolu s AppHostom Aspire"],
+        "explain": "Functions sú serverless a udalosťami riadené — bežia, len keď ich niečo spustí (HTTP/správa/timer)." },
+      "en": { "q": "Which statement best describes an Azure Function?",
+        "options": [
+          "A trigger starts it and it scales to zero",
+          "It runs continuously like a regular web server",
+          "It's a library that you reference from a project",
+          "It must always run together with the Aspire AppHost"],
+        "explain": "Functions are serverless and event-driven — they run only when something triggers them (HTTP/message/timer)." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Správu zo Service Bus treba spracovať len občas, bez stáleho procesu. Najvhodnejšie?",
+        "options": [
+          "Stále bežiaca ASP.NET služba pollujúca frontu",
+          "Knižnica, ktorú niekto z času na čas zavolá",
+          "Ďalší samostatne nasaditeľný monolit navyše",
+          "Azure Function s triggerom na Service Bus"],
+        "explain": "Nárazové, udalosťami riadené spracovanie je prípad pre Function — keď niet správ, nebeží a neplatíš." },
+      "en": { "q": "A Service Bus message needs processing only occasionally, with no always-on process. Best?",
+        "options": [
+          "An always-on ASP.NET service polling the queue",
+          "A library that someone calls from time to time",
+          "Yet another separately deployable extra monolith",
+          "An Azure Function triggered by the Service Bus"],
+        "explain": "Bursty, event-driven processing is the Function case — when there are no messages it doesn't run and you don't pay." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Aký problém rieši AppHost v .NET Aspire?",
+        "options": [
+          "Nahrádza primárnu databázu celej aplikácie",
+          "Orchestruje časti appky (F5, discovery, configy)",
+          "Je to úplne nový programovací jazyk od Microsoftu",
+          "Šifruje všetku HTTP komunikáciu medzi službami"],
+        "explain": "AppHost v C# deklaruje app model (resources + references) a zjednoduší lokálny beh a prepojenie častí." },
+      "en": { "q": "What problem does the AppHost in .NET Aspire solve?",
+        "options": [
+          "It replaces the primary database of the whole app",
+          "It orchestrates app parts (F5, discovery, configs)",
+          "It's a brand-new programming language from Microsoft",
+          "It encrypts all the HTTP traffic between the services"],
+        "explain": "The AppHost declares the app model (resources + references) in C# and simplifies local runs and wiring." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Čo znamená v AppHoste 'service discovery'?",
+        "options": [
+          "Služby sa nájdu podľa logického názvu",
+          "Automatické mazanie dlhšie nepoužívaných služieb",
+          "Skenovanie internetu kvôli novým dostupným API",
+          "Generovanie testovacích dát pre jednotlivé služby"],
+        "explain": "Aspire prideľuje resourceom logické názvy a adresy, takže služby sa odkazujú menom, nie pevnou URL." },
+      "en": { "q": "What does 'service discovery' mean in the AppHost?",
+        "options": [
+          "Services find each other by a logical name",
+          "Automatic deletion of services unused for a while",
+          "Scanning the internet for newly available APIs",
+          "Generating test data for the individual services"],
+        "explain": "Aspire gives resources logical names and addresses, so services refer to each other by name, not a fixed URL." }
+    }
+  ]
+}

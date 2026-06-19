@@ -1,0 +1,209 @@
+{
+  "pick": 6,
+  "questions": [
+    {
+      "answer": 1,
+      "sk": { "q": "Ako má podľa konvencie vyzerať názov vetvy?",
+        "options": [
+          "Meno vývojára a dátum vytvorenia danej vetvy",
+          "Zámer (feature/bugfix/…) a vec v kebab-case",
+          "Číslo work itemu a názov cieľového prostredia",
+          "Náhodný hash, ktorý git priradí automaticky sám"],
+        "explain": "Konvencia je zámer + / + riešená vec v kebab-case, napr. feature/invoices-export." },
+      "en": { "q": "What should a branch name look like by convention?",
+        "options": [
+          "The developer's name and the branch creation date",
+          "The intention (feature/bugfix/…) and a kebab thing",
+          "The work item number and the target environment name",
+          "A random hash that git assigns automatically on its own"],
+        "explain": "The convention is intention + / + the thing in kebab-case, e.g. feature/invoices-export." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Ako commituješ počas práce na vetve?",
+        "options": [
+          "Všetko naraz v jednom veľkom commite na konci",
+          "Iba vtedy, keď ti to pripomenie reviewer v PR",
+          "Priebežne, v rozumných logických dávkach",
+          "Nikdy, commit spraví až pipeline po merge"],
+        "explain": "Commituj priebežne v rozumných dávkach — jeden commit = jedna logická zmena." },
+      "en": { "q": "How do you commit while working on a branch?",
+        "options": [
+          "All at once in one big commit right at the end",
+          "Only when a reviewer reminds you to in the PR",
+          "Regularly, in reasonable logical batches",
+          "Never, the post-merge pipeline commits for you"],
+        "explain": "Commit regularly in reasonable batches — one commit = one logical change." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Začínaš v novom repozitári. Aký prístup je najlepší?",
+        "options": [
+          "Skús kód napísať sám, aby si mu porozumel",
+          "Všetko nechaj vygenerovať AI a hneď commitni",
+          "Počkaj, kým ti to celé naprogramuje mentor",
+          "Skopíruj cudzí PR a prepíš len názvy premenných"],
+        "explain": "AI vieš použiť, no znalosť kódu je dôležitejšia — vlastný pokus ti pomôže reálne porozumieť." },
+      "en": { "q": "You're starting in a new repository. What's the best approach?",
+        "options": [
+          "Try to write the code yourself, to understand it",
+          "Let AI generate everything and commit it right away",
+          "Wait until the mentor programs the whole thing for you",
+          "Copy someone's PR and just rename the variables in it"],
+        "explain": "You can use AI, but knowing the code matters more — writing it yourself helps you really understand." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čím píšeme nové API testy?",
+        "options": [
+          "Výhradne ručným preklikávaním v prehliadači",
+          "Starými Postman kolekciami aj pre nový kód",
+          "Unit testami spustenými cez príkaz nuke build",
+          "Primárne nástrojom TeaPie (.http testy)"],
+        "explain": "Nové API testy píšeme primárne v TeaPie; Postman kolekcie sú v staršom (legacy) kóde." },
+      "en": { "q": "What do we write new API tests with?",
+        "options": [
+          "Exclusively by clicking through them in a browser",
+          "With old Postman collections even for new code",
+          "With unit tests run through the nuke build command",
+          "Primarily with TeaPie (the .http tests)"],
+        "explain": "New API tests are written primarily in TeaPie; Postman collections live in older (legacy) code." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Načo slúži nuke build --wae pred odoslaním PR?",
+        "options": [
+          "Nasadí tvoju vetvu rovno na testlab prostredie",
+          "Overí build prísnejšie, rovnako ako PR pipeline",
+          "Automaticky za teba vytvorí a publikuje PR draft",
+          "Zmaže lokálne zmeny a stiahne najnovší master"],
+        "explain": "--wae = warnings as errors; build je prísnejší než lokálny a rovnaký ako na PR pipeline." },
+      "en": { "q": "What is nuke build --wae for before submitting a PR?",
+        "options": [
+          "It deploys your branch straight to the testlab",
+          "It verifies the build strictly, like the PR pipeline",
+          "It automatically creates and publishes a PR draft",
+          "It deletes local changes and pulls the newest master"],
+        "explain": "--wae = warnings as errors; the build is stricter than local and matches the PR pipeline." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Tvoja vetva zostarla oproti master. Čo spraviť pred PR?",
+        "options": [
+          "Ignorovať to, master sa pri merge doplní sám",
+          "Vytvoriť úplne novú vetvu a začať celé odznova",
+          "Dotiahnuť najnovší master a vyriešiť konflikty",
+          "Počkať, nech konflikty vyrieši reviewer v review"],
+        "explain": "Najnovší master dotiahni do vetvy a konflikty vyrieš hneď — nie až keď je PR v review." },
+      "en": { "q": "Your branch went stale against master. What to do before the PR?",
+        "options": [
+          "Ignore it, master fills itself in during the merge",
+          "Create a whole new branch and start all over again",
+          "Pull the newest master and resolve the conflicts",
+          "Wait and let the reviewer resolve conflicts in review"],
+        "explain": "Pull the newest master into the branch and resolve conflicts now — not once the PR is in review." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Spúšťaš projekty z Visual Studia. Na čo si dať pozor?",
+        "options": [
+          "Presmerovať správy mimo testlab Service Bus",
+          "Vypnúť všetky unit testy v celom riešení",
+          "Nasadiť zmeny na testlab ešte pred buildom",
+          "Zmazať Docker, lebo Aspire sa nesmie spúšťať"],
+        "explain": "Bez presmerovania by si kradol správy ostatným — návod na to je v tímovej wiki." },
+      "en": { "q": "You launch projects from Visual Studio. What to watch out for?",
+        "options": [
+          "Redirect messages away from the testlab Service Bus",
+          "Switch off all the unit tests in the whole solution",
+          "Deploy the changes to testlab even before the build",
+          "Delete Docker, because Aspire must never be started"],
+        "explain": "Without redirecting you'd steal other people's messages — the manual for it is in the team wiki." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo patrí k vytvoreniu PR draftu?",
+        "options": [
+          "Priložiť screenshot celej obrazovky s kódom",
+          "Vymazať všetky commity a nahradiť ich jedným",
+          "Poslať ho na review ešte pred spustením testov",
+          "Prelinkovať work itemy a napísať popis"],
+        "explain": "Prelinkuj task aj jeho rodiča (US/Bug), napíš popis pre reviewerov a ešte raz si prejdi diff." },
+      "en": { "q": "What belongs to creating a PR draft?",
+        "options": [
+          "Attaching a screenshot of the whole code screen",
+          "Deleting all the commits and replacing them with one",
+          "Sending it for review even before running any tests",
+          "Linking the work items and writing a meaningful description"],
+        "explain": "Link the task and its parent (US/Bug), write a description for reviewers, and go through the diff again." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Reviewer dal pripomienky a ty si ich zapracoval. Čo ďalej?",
+        "options": [
+          "Rovno mergni do master bez akejkoľvek kontroly",
+          "Over, že build aj testy sú stále zelené",
+          "Zmaž celý PR a vytvor úplne nový od začiatku",
+          "Pošli to na testlab a hneď to oznám testerom"],
+        "explain": "Po zapracovaní pripomienok musí stále platiť bod 7 — build aj testy zelené." },
+      "en": { "q": "The reviewer left comments and you implemented them. What next?",
+        "options": [
+          "Merge into master right away without any checking",
+          "Verify the build and tests are still green after changes",
+          "Delete the whole PR and create a brand new one",
+          "Send it to testlab and announce it to testers at once"],
+        "explain": "After implementing the comments, step 7 must still hold — build and tests green." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Post-merge pipeline po merge spadla. Aký krok je rozumný?",
+        "options": [
+          "Nič neriešiť, opraví sa to pri ďalšom deploy",
+          "Hneď revertnúť celý master o týždeň dozadu",
+          "Zistiť príčinu, prípadne poprosiť skúsenejšieho",
+          "Vytvoriť nový PR s tými istými zmenami nanovo"],
+        "explain": "Treba zistiť, čo je zle; býva to ťažšie, preto pokojne popros o pomoc skúsenejšieho kolegu." },
+      "en": { "q": "The post-merge pipeline broke after the merge. What's a sensible step?",
+        "options": [
+          "Solve nothing, it'll fix itself on the next deploy",
+          "Revert the whole master a week back immediately",
+          "Find the cause, and ask a more experienced colleague",
+          "Create a new PR with the same changes from scratch"],
+        "explain": "You need to find what's wrong; it tends to be harder, so feel free to ask a more experienced colleague." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Tvoje zmeny sa nasadili na testlab. Čo je dobrý zvyk?",
+        "options": [
+          "Prekliknúť ich tam a dať o tom vedieť testerom",
+          "Hneď zmazať svoju vetvu aj s celou históriou",
+          "Nasadiť ich rovno aj do produkcie samostatne",
+          "Začať ďalší PR a na testlab úplne zabudnúť"],
+        "explain": "Zmeny si na testlabe manuálne preklikni a oznám testerom, že je to ready-to-be-tested." },
+      "en": { "q": "Your changes got deployed to testlab. What's good practice?",
+        "options": [
+          "Click through them there and let the testers know",
+          "Delete your branch right away with its whole history",
+          "Deploy them straight to production on your own too",
+          "Start the next PR and forget about testlab entirely"],
+        "explain": "Click through the changes on testlab manually and tell testers it's ready to be tested." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Načo primárne slúži pull request?",
+        "options": [
+          "Na automatické generovanie unit testov k zmenám",
+          "Na okamžité nasadenie kódu priamo do produkcie",
+          "Na hromadné zmazanie starých vetiev v repozitári",
+          "Na review a bezpečné začlenenie zmien do mastera"],
+        "explain": "PR je miesto na review a bezpečné začlenenie zmien do mastera — overené buildom, testami aj ľuďmi." },
+      "en": { "q": "What is a pull request primarily for?",
+        "options": [
+          "For automatically generating unit tests for changes",
+          "For instantly deploying the code straight to production",
+          "For bulk-deleting all the old branches in the repository",
+          "For review and safely integrating changes into master"],
+        "explain": "A PR is the place to review and safely integrate changes into master — verified by build, tests, and people." }
+    }
+  ]
+}

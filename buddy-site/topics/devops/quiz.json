@@ -1,0 +1,209 @@
+{
+  "pick": 6,
+  "questions": [
+    {
+      "answer": 2,
+      "sk": { "q": "Aké je správne poradie hierarchie work itemov zhora nadol?",
+        "options": [
+          "Task → User Story → Feature → Epic",
+          "Feature → Epic → Task → User Story",
+          "Epic → Feature → User Story → Task",
+          "User Story → Epic → Feature → Task"],
+        "explain": "Od najväčšieho po najmenšie: Epic → Feature → User Story (alebo Bug) → Task." },
+      "en": { "q": "What is the correct work-item hierarchy from top to bottom?",
+        "options": [
+          "Task → User Story → Feature → Epic",
+          "Feature → Epic → Task → User Story",
+          "Epic → Feature → User Story → Task",
+          "User Story → Epic → Feature → Task"],
+        "explain": "From largest to smallest: Epic → Feature → User Story (or Bug) → Task." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Ktorý work item je najmenší, konkrétny vývojársky krok?",
+        "options": [
+          "Task",
+          "Epic",
+          "Feature",
+          "User Story"],
+        "explain": "Task je najmenšia jednotka — konkrétny krok, z ktorého sa skladá User Story." },
+      "en": { "q": "Which work item is the smallest, concrete development step?",
+        "options": [
+          "Task",
+          "Epic",
+          "Feature",
+          "User Story"],
+        "explain": "A Task is the smallest unit — a concrete step that a User Story is built from." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Čo je backlog?",
+        "options": [
+          "Časový box dlhý zvyčajne dva týždne",
+          "Zoradený zoznam všetkej čakajúcej práce",
+          "Hotová a uzavretá funkcionalita projektu",
+          "Zoznam nasadení do produkčného prostredia"],
+        "explain": "Backlog je priebežne zoradený zoznam všetkého, čo nás ešte čaká — podľa priority." },
+      "en": { "q": "What is the backlog?",
+        "options": [
+          "A time box that's usually two weeks long",
+          "An ordered list of all the pending work",
+          "Finished and closed project functionality",
+          "A list of deployments to the production environment"],
+        "explain": "The backlog is a continuously ordered list of everything still ahead — by priority." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo je sprint (iterácia)?",
+        "options": [
+          "Zoznam všetkých budúcich úloh projektu bez termínu",
+          "Najmenší typ work itemu v hierarchii",
+          "Farebné pravidlo na kartách dosky",
+          "Časový box, do ktorého vyberieš prácu na teraz"],
+        "explain": "Sprint je časový box (napr. 2 týždne); z backlogu doň vyberáš podmnožinu na teraz." },
+      "en": { "q": "What is a sprint (iteration)?",
+        "options": [
+          "A list of all future tasks with no deadline",
+          "The smallest work-item type in the hierarchy",
+          "A color rule on the cards of a board",
+          "A time box you pull work into for now"],
+        "explain": "A sprint is a time box (e.g. 2 weeks); you pull a subset of the backlog into it for now." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "V projekte je viac tímov. Čo z toho platí?",
+        "options": [
+          "Všetky tímy zdieľajú jeden spoločný backlog",
+          "Tímy nemôžu mať vlastné sprinty ani dosky",
+          "Každý tím má vlastnú dosku, backlog a sprinty",
+          "Work item nepatrí pod žiadny konkrétny tím"],
+        "explain": "Každý tím má vlastnú dosku/backlog/iterácie; work item patrí pod oblasť (area path) tímu." },
+      "en": { "q": "A project has multiple teams. Which of these is true?",
+        "options": [
+          "All teams share one single common backlog",
+          "Teams can't have their own sprints or boards",
+          "Each team has its own board, backlog, and sprints",
+          "A work item belongs to no specific team at all"],
+        "explain": "Each team has its own board/backlog/iterations; a work item belongs to a team's area path." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Na čo slúžia tagy (tags) na work itemoch?",
+        "options": [
+          "Na štítkovanie a filtrovanie work itemov",
+          "Na nasadenie zmien do produkcie",
+          "Na automatické písanie unit testov",
+          "Na určenie poradia v hierarchii itemov"],
+        "explain": "Tagy sú voľné štítky (napr. tech-debt, hotfix), podľa ktorých filtruješ a zoskupuješ." },
+      "en": { "q": "What are tags on work items for?",
+        "options": [
+          "Labeling and filtering the work items",
+          "Deploying changes into production",
+          "Automatically writing unit tests",
+          "Setting the order in the item hierarchy"],
+        "explain": "Tags are free labels (e.g. tech-debt, hotfix) you filter and group by." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Čo vyjadruje metrika cycle time?",
+        "options": [
+          "Počet otvorených work itemov v backlogu",
+          "Ako dlho work item trval od začatia po dokončenie",
+          "Koľko tímov pracuje na jednom projekte",
+          "Relatívnu náročnosť danej úlohy meranú v Story Points"],
+        "explain": "Cycle time meria čas od začatia po dokončenie — ukazuje priepustnosť a kde sa práca seká." },
+      "en": { "q": "What does the cycle time metric express?",
+        "options": [
+          "The number of open work items in the backlog",
+          "How long a work item took from started to done",
+          "How many teams work on a single project",
+          "The relative effort of a task in Story Points"],
+        "explain": "Cycle time measures time from started to done — it shows throughput and where work gets stuck." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Načo sú farebné pravidlá kariet na doske?",
+        "options": [
+          "Aby sa karty rýchlejšie ukladali do databázy",
+          "Aby sa automaticky uzatvárali staré work itemy",
+          "Aby sa vypočítal odhad času celého sprintu",
+          "Aby si dôležité veci videl na prvý pohľad"],
+        "explain": "Farby (podľa typu/tagu/poľa) ti pomôžu vizuálne rozlíšiť a rýchlo nájsť dôležité karty." },
+      "en": { "q": "What are card color rules on a board for?",
+        "options": [
+          "So cards are saved to the database faster",
+          "So old work items get closed automatically",
+          "So the whole sprint's time estimate is computed",
+          "So you spot important things at a glance"],
+        "explain": "Colors (by type/tag/field) help you visually distinguish and quickly find important cards." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo sú Story Points?",
+        "options": [
+          "Počet komentárov pod work itemom",
+          "Stav, v ktorom sa work item nachádza",
+          "Odhad relatívnej náročnosti práce",
+          "Číslo (ID) prideleného work itemu"],
+        "explain": "Story Points sú odhad relatívnej náročnosti — pomáhajú plánovať, koľko sa zmestí do sprintu." },
+      "en": { "q": "What are Story Points?",
+        "options": [
+          "The number of comments under a work item",
+          "The state a work item is currently in",
+          "An estimate of the relative effort of work",
+          "The number (ID) of the assigned work item"],
+        "explain": "Story Points are an estimate of relative effort — they help plan how much fits into a sprint." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Čo predstavuje Epic v hierarchii?",
+        "options": [
+          "Veľkú tému/cieľ, ktorý zastrešuje viac features",
+          "Najmenší konkrétny krok vo veľkosti hodín",
+          "Chybu, ktorú treba v kóde opraviť",
+          "Časový box na vykonávanie práce počas jednej iterácie"],
+        "explain": "Epic je najväčšia položka — veľký cieľ/téma, pod ktorý patrí viac Features." },
+      "en": { "q": "What does an Epic represent in the hierarchy?",
+        "options": [
+          "A large theme/goal spanning several features",
+          "The smallest concrete step sized in hours",
+          "A defect that needs fixing in the code",
+          "A time box for work during an iteration"],
+        "explain": "An Epic is the largest item — a big goal/theme that several Features sit under." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Na ktorej úrovni hierarchie je Bug?",
+        "options": [
+          "Nad Epicom, ako úplne najvyššia položka",
+          "Na úrovni User Story (prírastok/chyba)",
+          "Vždy len ako podúloha jedného Tasku",
+          "Mimo hierarchie, nikdy nemá rodiča"],
+        "explain": "Bug je na úrovni User Story — je to chyba na opravu, súrodenec príbehov v hierarchii." },
+      "en": { "q": "At which hierarchy level is a Bug?",
+        "options": [
+          "Above the Epic, as the very highest item",
+          "At the User Story level (increment/defect)",
+          "Always only as a sub-item of one Task",
+          "Outside the hierarchy, it never has a parent"],
+        "explain": "A Bug is at the User Story level — it's a defect to fix, a sibling of stories in the hierarchy." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo z toho má každý work item?",
+        "options": [
+          "Vlastnú samostatnú databázu na disku",
+          "Pridelenú farbu, ktorá sa nedá zmeniť",
+          "Povinne aspoň jeden vnorený Epic",
+          "Typ, stav, priradeného človeka a ID"],
+        "explain": "Work item má typ, názov, stav, priradeného človeka a jedinečné ID — to sú jeho základné polia." },
+      "en": { "q": "Which of these does every work item have?",
+        "options": [
+          "Its own separate database on disk",
+          "An assigned color that cannot be changed",
+          "At least one nested Epic, mandatorily",
+          "A type, state, assignee, and an ID"],
+        "explain": "A work item has a type, title, state, assignee, and a unique ID — those are its basic fields." }
+    }
+  ]
+}

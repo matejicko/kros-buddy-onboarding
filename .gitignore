@@ -1,0 +1,11 @@
+# Deployment secrets — NEVER commit these
+deploy/.swa-token
+*.swa-token
+deploy/.env
+deploy/targets.json
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+*.log

@@ -1,0 +1,345 @@
+{
+  "pick": 10,
+  "questions": [
+    {
+      "answer": 0,
+      "sk": { "q": "Metóda narazí na 'await _db.QueryAsync()'. Čo sa deje s vláknom, kým beží dotaz?",
+        "options": [
+          "Vráti sa do poolu a obslúži iné požiadavky",
+          "Ostane pridelené metóde a celý čas nečinne čaká",
+          "Aktívne čaká (busy-wait) a opakovane sa pýta databázy",
+          "Zanikne a pre pokračovanie sa vytvorí úplne nové vlákno"],
+        "explain": "Uvoľnenie vlákna počas čakania je celý zmysel await — nevracia sa k nečinnému čakaniu." },
+      "en": { "q": "A method hits 'await _db.QueryAsync()'. What happens to the thread while the query runs?",
+        "options": [
+          "It returns to the pool and serves other requests",
+          "It stays assigned to the method and idles the whole time",
+          "It busy-waits, repeatedly polling the database for a result",
+          "It is destroyed and a completely new thread is created for it"],
+        "explain": "Releasing the thread during the wait is the whole point of await — it doesn't sit idle." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Ktoré tvrdenie o async/await a vláknach je pravdivé?",
+        "options": [
+          "async presunie telo metódy na vlákno na pozadí",
+          "await uvoľní vlákno; pokračovanie môže bežať na inom",
+          "await vždy obnoví pokračovanie na pôvodnom štartovacom vlákne",
+          "async metóda zásadne nikdy nesmie bežať na vlákne z thread poolu"],
+        "explain": "async sám nevytvára vlákno; po dokončení I/O môže pokračovanie obnoviť ktorékoľvek voľné vlákno." },
+      "en": { "q": "Which statement about async/await and threads is true?",
+        "options": [
+          "async moves the method body onto a background thread",
+          "await frees the thread; the continuation may run on another",
+          "await always resumes the continuation on the original starting thread",
+          "an async method fundamentally may never run on a thread-pool thread"],
+        "explain": "async creates no thread; after the I/O completes any free thread may resume the continuation." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "V ASP.NET handleri je 'var d = repo.GetAsync().Result;'. Najväčšie riziko?",
+        "options": [
+          "Výsledok bude vždy null",
+          "Mierne pomalšia kompilácia",
+          "Možný deadlock a strata škálovateľnosti",
+          "Kód sa kvôli .Result vôbec neskompiluje a treba await"],
+        "explain": "Blokujúce .Result môže v synchronizačnom kontexte zaseknúť appku a zahodí výhodu uvoľneného vlákna." },
+      "en": { "q": "In an ASP.NET handler there's 'var d = repo.GetAsync().Result;'. The biggest risk?",
+        "options": [
+          "The result will always be null",
+          "Slightly slower compilation",
+          "A possible deadlock and lost scalability",
+          "The code won't compile at all because of .Result and needs await"],
+        "explain": "A blocking .Result can deadlock under a sync context and throws away the freed-thread benefit." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Tri NEZÁVISLÉ volania (~150 ms) sú awaitované po jednom (~450 ms). Najlepšia oprava?",
+        "options": [
+          "Zavolať .Result na každom volaní",
+          "Spraviť všetky tri metódy synchrónnymi",
+          "Zabaliť každé volanie zvlášť do Task.Run na pozadí",
+          "Spustiť ich naraz a počkať na všetky cez Task.WhenAll"],
+        "explain": "Nezávislé operácie rozbehni súčasne a počkaj cez WhenAll (~150 ms). Task.Run je pre CPU prácu, nie I/O." },
+      "en": { "q": "Three INDEPENDENT calls (~150 ms) are awaited one by one (~450 ms). Best fix?",
+        "options": [
+          "Call .Result on each call",
+          "Make all three methods synchronous",
+          "Wrap each separate call in Task.Run on the background",
+          "Start them at once and await them all via Task.WhenAll"],
+        "explain": "Run independent operations concurrently and await WhenAll (~150 ms). Task.Run is for CPU work, not I/O." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Prečo je 'public async void HandleMessage(...)' pre spracovanie správy riskantné?",
+        "options": [
+          "Výnimky uniknú a volajúci nevie počkať na dokončenie",
+          "async void nesmie obsahovať await",
+          "Je vždy citeľne pomalšie než async Task",
+          "Donúti celú aplikáciu bežať na jednom vlákne"],
+        "explain": "async void sa nedá awaitovať a jeho výnimky obídu normálny tok — preto len pre event handlery." },
+      "en": { "q": "Why is 'public async void HandleMessage(...)' risky for processing a message?",
+        "options": [
+          "Exceptions escape and the caller can't await completion",
+          "async void can't contain await",
+          "It is always noticeably slower than async Task",
+          "It forces the whole application onto a single thread"],
+        "explain": "async void can't be awaited and its exceptions bypass the normal flow — so it's for event handlers only." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Pri ktorej práci ti async/await prakticky NEPOMÔŽE?",
+        "options": [
+          "Volanie vzdialeného HTTP API",
+          "CPU-náročný výpočet v pamäti",
+          "Čítanie veľkého súboru z pomalého disku",
+          "Dotaz do vzdialenej databázy cez sieť"],
+        "explain": "async pomáha pri ČAKANÍ na I/O. Pri výpočte vlákno reálne pracuje, takže ho nie je čo uvoľniť." },
+      "en": { "q": "For which work will async/await practically NOT help?",
+        "options": [
+          "Calling a remote HTTP API",
+          "A CPU-heavy in-memory computation",
+          "Reading a large file from a slow disk",
+          "Querying a remote database over the network"],
+        "explain": "async helps while WAITING on I/O. In a computation the thread is busy, so there's nothing to free." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo dostane volajúci, keď 'async Task<int> CountAsync()' narazí na prvý await?",
+        "options": [
+          "Hodnotu null",
+          "Hotové celé číslo",
+          "Zatiaľ nedokončený Task<int>",
+          "Okamžitú výnimku, lebo výsledok ešte nie je hotový"],
+        "explain": "Pri prvom await sa metóda pozastaví a vráti rozrobený Task<int>; hodnotu dostaneš až po jeho await." },
+      "en": { "q": "What does the caller get when 'async Task<int> CountAsync()' hits its first await?",
+        "options": [
+          "A null value",
+          "A finished integer",
+          "A not-yet-completed Task<int>",
+          "An immediate exception, since the result isn't ready yet"],
+        "explain": "At the first await the method suspends and returns an in-flight Task<int>; you get the value after awaiting it." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo v praxi znamená princíp 'async all the way'?",
+        "options": [
+          "Všetko treba spúšťať cez Task.Run",
+          "async sa smie použiť iba v metóde Main",
+          "Každá jedna metóda v celom projekte musí byť async",
+          "Awaituješ celou cestou nahor a neblokuješ cez .Result"],
+        "explain": "Reťazec sa nemá v strede zlomiť blokovaním; vyhneš sa deadlocku a nestratíš zisk z uvoľneného vlákna." },
+      "en": { "q": "What does the 'async all the way' principle mean in practice?",
+        "options": [
+          "Everything must be launched via Task.Run",
+          "async may only be used in the Main method",
+          "Every single method in the whole project must be async",
+          "You await all the way up and don't block with .Result"],
+        "explain": "Don't break the chain by blocking in the middle; you avoid deadlocks and keep the freed-thread benefit." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Máš 'var q = src.Where(x => x.IsActive);'. Kedy sa filter naozaj vykoná?",
+        "options": [
+          "Až keď cez q prejdeš (foreach/ToList/Count)",
+          "Okamžite na riadku s Where",
+          "Pri samotnej deklarácii premennej q",
+          "Nikdy, kým explicitne nezavoláš q.Compile()"],
+        "explain": "LINQ je odložený (lazy) — definícia dotazu nič nespustí, vykoná sa až iterácia." },
+      "en": { "q": "You have 'var q = src.Where(x => x.IsActive);'. When does the filter really run?",
+        "options": [
+          "Only when you iterate q (foreach/ToList/Count)",
+          "Immediately, on the Where line",
+          "At the very declaration of variable q",
+          "Never, until you explicitly call q.Compile()"],
+        "explain": "LINQ is deferred (lazy) — defining the query runs nothing; iteration executes it." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "'int limit=5; var q=nums.Where(n=>n>limit); limit=50; q.ToList();' — podľa čoho filtruje?",
+        "options": [
+          "Podľa 5, to bola hodnota pri definícii",
+          "Podľa 50, dotaz sa vyhodnotí pri ToList()",
+          "Vyhodí výnimku, lebo premenná sa medzitým zmenila",
+          "Filtruje dvakrát — raz podľa 5 a raz podľa 50"],
+        "explain": "Odložené vyhodnotenie: lambda číta 'limit' až pri iterácii, kedy má hodnotu 50." },
+      "en": { "q": "'int limit=5; var q=nums.Where(n=>n>limit); limit=50; q.ToList();' — what does it filter by?",
+        "options": [
+          "By 5, that was the value at definition",
+          "By 50, the query evaluates at ToList()",
+          "It throws, because the variable changed in between",
+          "It filters twice — once by 5 and once by 50"],
+        "explain": "Deferred evaluation: the lambda reads 'limit' at iteration time, when it is 50." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Nad DB 'IEnumerable' zavoláš 'Count()' a potom 'foreach'. Čo sa pri EF stane?",
+        "options": [
+          "foreach po Count vráti prázdno",
+          "Dotaz sa vykoná raz a odcachuje sa",
+          "Dotaz do DB sa vykoná dvakrát",
+          "Vyhodí výnimku o viacnásobnej enumerácii sekvencie"],
+        "explain": "Lenivá sekvencia sa vyhodnotí pri každom prejdení — sú to dve reálne cesty do databázy." },
+      "en": { "q": "On a DB 'IEnumerable' you call 'Count()' then 'foreach'. With EF, what happens?",
+        "options": [
+          "foreach returns empty after Count",
+          "The query runs once and is cached",
+          "The DB query runs twice",
+          "It throws an exception about multiple enumeration of the sequence"],
+        "explain": "A lazy sequence evaluates on each pass — that's two real database round-trips." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Z miliónov objednávok chceš len posledný týždeň (IQueryable nad DB). Správne?",
+        "options": [
+          "_db.Orders.ToList().Where(o => o.Date > week)",
+          "Je to úplne jedno, výkon aj výsledok sú rovnaké",
+          "_db.Orders.AsEnumerable().Where(o => o.Date > week).ToList()",
+          "_db.Orders.Where(o => o.Date > week).ToList()"],
+        "explain": "Filtruj PRED materializáciou, nech sa to preloží do SQL WHERE. ToList()/AsEnumerable() na začiatku stiahnu celú tabuľku." },
+      "en": { "q": "From millions of orders you want only last week (IQueryable over DB). Correct?",
+        "options": [
+          "_db.Orders.ToList().Where(o => o.Date > week)",
+          "It doesn't matter at all, same performance and result",
+          "_db.Orders.AsEnumerable().Where(o => o.Date > week).ToList()",
+          "_db.Orders.Where(o => o.Date > week).ToList()"],
+        "explain": "Filter BEFORE materializing so it becomes a SQL WHERE. A leading ToList()/AsEnumerable() downloads the whole table." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Potrebuješ len zistiť, či existuje aspoň jedna nezaplatená faktúra (DB). Najefektívnejšie?",
+        "options": [
+          "invoices.Any()",
+          "invoices.Count() > 0",
+          "invoices.ToList().Any()",
+          "invoices.Where(i => !i.Paid).Count() >= 1"],
+        "explain": "Any() sa preloží na SQL EXISTS a zastaví pri prvom riadku; ostatné zbytočne prejdú alebo stiahnu všetko." },
+      "en": { "q": "You only need whether at least one unpaid invoice exists (DB). Most efficient?",
+        "options": [
+          "invoices.Any()",
+          "invoices.Count() > 0",
+          "invoices.ToList().Any()",
+          "invoices.Where(i => !i.Paid).Count() >= 1"],
+        "explain": "Any() maps to SQL EXISTS and stops at the first row; the others needlessly scan or download everything." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Aký je hlavný rozdiel medzi IQueryable<T> a IEnumerable<T> pri DB?",
+        "options": [
+          "Žiadny, sú navzájom úplne zameniteľné",
+          "IQueryable filtruje v DB (SQL), IEnumerable v pamäti",
+          "IEnumerable sa preloží do SQL, IQueryable beží v pamäti",
+          "IQueryable je len pre čísla, IEnumerable je pre objekty"],
+        "explain": "Kým si na IQueryable, operácie idú do SQL. Po prechode na IEnumerable beží zvyšok v aplikácii." },
+      "en": { "q": "Key difference between IQueryable<T> and IEnumerable<T> with a DB?",
+        "options": [
+          "None, they are completely interchangeable",
+          "IQueryable filters in the DB (SQL), IEnumerable in memory",
+          "IEnumerable translates to SQL, IQueryable runs in memory",
+          "IQueryable is only for numbers, IEnumerable is for objects"],
+        "explain": "While on IQueryable, operations go to SQL. Once it becomes IEnumerable, the rest runs in the app." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Spracúvaš 5 miliónov riadkov po jednom a hneď ich zapisuješ. Najvhodnejšie?",
+        "options": [
+          "Najprv Count(), nech vieš počet",
+          "Spracovať ich všetky cez async void",
+          "Iterovať lenivo cez foreach bez ToList()",
+          "Načítať všetko cez ToList() a potom postupne iterovať"],
+        "explain": "Streamovanie bez materializácie drží v pamäti vždy len jeden riadok; ToList() by načítal všetkých 5 miliónov." },
+      "en": { "q": "You process 5 million rows one by one, writing each out. Best?",
+        "options": [
+          "Call Count() first to know the total",
+          "Process them all via async void",
+          "Iterate lazily with foreach, no ToList()",
+          "Load everything via ToList() and then iterate gradually"],
+        "explain": "Streaming without materializing keeps one row in memory at a time; ToList() would load all 5 million." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Trieda dostáva 'IClock' cez konštruktor namiesto DateTime.Now. Hlavná výhoda?",
+        "options": [
+          "Beží to citeľne rýchlejšie",
+          "Je to o niečo menej riadkov kódu",
+          "DateTime.Now sa inak vôbec nedá skompilovať",
+          "V teste podstrčíš fake čas a overíš správanie"],
+        "explain": "Testovateľnosť je dôvod — vďaka DI vieš čas v teste riadiť, čo s priamym DateTime.Now nejde." },
+      "en": { "q": "A class receives 'IClock' via the constructor instead of DateTime.Now. Main benefit?",
+        "options": [
+          "It runs noticeably faster",
+          "It's a little fewer lines of code",
+          "DateTime.Now otherwise won't compile at all",
+          "In a test you inject a fake time and verify behavior"],
+        "explain": "Testability is the reason — DI lets you control time in a test, which a direct DateTime.Now does not." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Do Singleton služby injektneš Scoped repository (drží DbContext). Typický dôsledok?",
+        "options": [
+          "Singleton uväzní DbContext — captive dependency",
+          "Funguje to ideálne, je to odporúčaný postup",
+          "Kompilátor to pri štarte rovno odmietne",
+          "Každý nový request automaticky dostane čerstvý DbContext"],
+        "explain": "Dlhožijúci singleton podrží krátkožijúci scoped DbContext, ktorý sa zdieľa cez requesty — ťažko hľadateľné bugy." },
+      "en": { "q": "Into a Singleton you inject a Scoped repository (holds a DbContext). Typical result?",
+        "options": [
+          "The singleton traps the DbContext — captive dependency",
+          "It works perfectly, it's the recommended approach",
+          "The compiler rejects it outright at startup",
+          "Each new request automatically gets a fresh DbContext"],
+        "explain": "A long-lived singleton holds the short-lived scoped DbContext, shared across requests — hard-to-find bugs." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Ktorá životnosť dáva NOVÚ inštanciu pri každom vyžiadaní služby?",
+        "options": [
+          "Scoped",
+          "Transient",
+          "Singleton",
+          "Static"],
+        "explain": "Transient = nová zakaždým. Scoped = jedna na request, Singleton = jedna na appku, Static nie je životnosť DI." },
+      "en": { "q": "Which lifetime gives a NEW instance on every resolution?",
+        "options": [
+          "Scoped",
+          "Transient",
+          "Singleton",
+          "Static"],
+        "explain": "Transient = new every time. Scoped = one per request, Singleton = one per app, Static isn't a DI lifetime." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo znamená Scoped životnosť v ASP.NET?",
+        "options": [
+          "Jedna inštancia na celú aplikáciu",
+          "Inštancia viazaná na konkrétne vlákno",
+          "Jedna inštancia na HTTP request",
+          "Nová inštancia pri každom jednom použití v rámci requestu"],
+        "explain": "Scoped žije počas jedného requestu — v ňom ju dostane každý, ale ďalší request má vlastnú." },
+      "en": { "q": "What does a Scoped lifetime mean in ASP.NET?",
+        "options": [
+          "One instance for the whole application",
+          "An instance bound to a specific thread",
+          "One instance per HTTP request",
+          "A new instance on every single use within the request"],
+        "explain": "Scoped lives for one request — everyone within it shares it, but the next request gets its own." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Ktorá z možností NIE JE Dependency Injection?",
+        "options": [
+          "Repository príde ako parameter konštruktora",
+          "Kontajner dosadí závislosti do konštruktora",
+          "V teste dosadíš mock implementáciu cez konštruktor",
+          "Trieda si v konštruktore spraví new SqlOrderRepository()"],
+        "explain": "new vnútri triedy je tvrdá závislosť — opak DI. Pri DI závislosť vždy príde zvonku." },
+      "en": { "q": "Which of these is NOT Dependency Injection?",
+        "options": [
+          "The repository arrives as a constructor parameter",
+          "The container supplies dependencies to the constructor",
+          "In a test you pass a mock implementation via the constructor",
+          "The class does new SqlOrderRepository() in its constructor"],
+        "explain": "new inside the class is a hard dependency — the opposite of DI. With DI the dependency always comes from outside." }
+    }
+  ]
+}

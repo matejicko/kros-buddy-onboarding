@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buddy — téma</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <script>
+    /* Apply theme before first paint to avoid a flash of the wrong theme. */
+    (function () {
+      try {
+        var t = localStorage.getItem("buddy.theme");
+        if (t !== "light" && t !== "dark") {
+          t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/vendor/prism.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span data-i18n="nav.hub">← Domov</span></a>
+    <div class="header-controls">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Light / dark theme">🌙</button>
+      <nav class="lang-toggle" id="langToggle">
+        <button data-lang="sk">SK</button><span>|</span><button data-lang="en">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 id="topicTitle"></h1>
+      <p class="tagline" id="topicSummary"></p>
+      <div class="progress" style="max-width:280px"><span id="topicBar"></span></div>
+    </div>
+  </section>
+
+  <main class="container topic-layout">
+    <nav class="side-nav"><ol id="sideNav"></ol></nav>
+    <article id="content"></article>
+  </main>
+
+  <footer class="site-footer">
+    <span data-i18n="footer.help"></span>
+  </footer>
+
+  <canvas id="confetti"></canvas>
+  <script src="assets/vendor/marked.min.js"></script>
+  <script src="assets/vendor/prism.js"></script>
+  <script src="assets/vendor/prism-clike.js"></script>
+  <script src="assets/vendor/prism-csharp.js"></script>
+  <script type="module" src="assets/js/content.js"></script>
+</body>
+</html>

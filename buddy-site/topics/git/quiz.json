@@ -1,0 +1,277 @@
+{
+  "pick": 8,
+  "questions": [
+    {
+      "answer": 0,
+      "sk": { "q": "Commitol si predčasne. Chceš zrušiť posledný commit, ale ponechať zmeny na úpravu. Čo použiješ?",
+        "options": [
+          "git reset --soft HEAD~1",
+          "git reset --hard HEAD~1",
+          "git push --force origin master",
+          "git restore --staged . a potom commitneš znova"],
+        "explain": "--soft posunie HEAD o commit späť, ale stage aj working tree nechá. --hard by zmeny zahodil." },
+      "en": { "q": "You committed too early. You want to undo the last commit but keep the changes to edit. What do you use?",
+        "options": [
+          "git reset --soft HEAD~1",
+          "git reset --hard HEAD~1",
+          "git push --force origin master",
+          "git restore --staged . and then commit again"],
+        "explain": "--soft moves HEAD back one commit but keeps the stage and working tree. --hard would discard the changes." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "V jednom súbore si narobil zmeny, ktoré chceš úplne zahodiť (späť na poslednú commitnutú verziu). Čo spravíš?",
+        "options": [
+          "git stash pop daného súboru",
+          "git restore <súbor>",
+          "git commit --amend daného súboru",
+          "git reset --hard HEAD na celom repozitári"],
+        "explain": "git restore <súbor> vráti súbor na poslednú commitnutú verziu. reset --hard by zahodil zmeny v CELOM repe." },
+      "en": { "q": "In one file you made edits you want to discard entirely (back to the last committed version). What do you do?",
+        "options": [
+          "git stash pop of that file",
+          "git restore <file>",
+          "git commit --amend of that file",
+          "git reset --hard HEAD on the whole repository"],
+        "explain": "git restore <file> returns the file to its last committed version. reset --hard would discard changes in the WHOLE repo." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Chceš len zistiť, čo je nové na serveri, bez toho aby si si to zlúčil do rozrobenej vetvy. Čo použiješ?",
+        "options": [
+          "git pull",
+          "git merge origin/master",
+          "git fetch",
+          "git push a potom git pull origin master"],
+        "explain": "fetch stiahne novinky bez merge. pull = fetch + merge zodpovedajúcej remote vetvy (origin/<tvoja-vetva>) do tej tvojej — rozrobenú vetvu ti rovno zmení." },
+      "en": { "q": "You just want to see what's new on the server without merging it into your work-in-progress branch. What do you use?",
+        "options": [
+          "git pull",
+          "git merge origin/master",
+          "git fetch",
+          "git push and then git pull origin master"],
+        "explain": "fetch downloads news without merging. pull = fetch + merge of the matching remote branch (origin/<your-branch>) into yours — it changes your branch right away." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Z vetvy feature potrebuješ dostať na Production práve jeden konkrétny commit s opravou. Čo použiješ?",
+        "options": [
+          "git merge feature do vetvy Production",
+          "git rebase Production na vetvu feature",
+          "git reset Production na daný commit",
+          "git cherry-pick <commit>"],
+        "explain": "cherry-pick prenesie JEDEN konkrétny commit. merge/rebase by ťahali celú vetvu, reset by posunul Production inam." },
+      "en": { "q": "From the feature branch you need exactly one specific fix commit onto Production. What do you use?",
+        "options": [
+          "git merge feature into the Production branch",
+          "git rebase Production onto the feature branch",
+          "git reset Production to that commit",
+          "git cherry-pick <commit>"],
+        "explain": "cherry-pick brings ONE specific commit. merge/rebase would pull the whole branch, reset would move Production elsewhere." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Máš rozrobené necommitnuté zmeny, ale musíš hneď prepnúť na master. Nechceš commitnúť polovičnú prácu. Čo spravíš?",
+        "options": [
+          "git stash, prepneš, neskôr git stash pop",
+          "git commit -m wip, prepneš a neskôr to celé vrátiš",
+          "git reset --hard a prepneš na master",
+          "git push rozrobenej vetvy a prepneš na master"],
+        "explain": "stash odloží rozrobené zmeny nabok a vyčistí working tree; po práci ich vrátiš cez stash pop." },
+      "en": { "q": "You have uncommitted work-in-progress but must switch to master now. You don't want to commit half-done work. What do you do?",
+        "options": [
+          "git stash, switch, later git stash pop",
+          "git commit -m wip, switch and later revert it all",
+          "git reset --hard and switch to master",
+          "git push the WIP branch and switch to master"],
+        "explain": "stash sets the WIP aside and cleans the working tree; after the detour you bring it back with stash pop." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Čo robí 'git add <súbor>'?",
+        "options": [
+          "Pošle daný súbor na remote server",
+          "Pridá zmeny do staging area pre najbližší commit",
+          "Vytvorí nový commit s daným súborom",
+          "Natrvalo zmaže súbor z histórie repozitára"],
+        "explain": "git add iba stage-uje — vyberie zmeny do staging area. Commit ani push nerobí." },
+      "en": { "q": "What does 'git add <file>' do?",
+        "options": [
+          "Sends the given file to the remote server",
+          "Adds the changes to the staging area for the next commit",
+          "Creates a new commit with the given file",
+          "Permanently deletes the file from the repo's history"],
+        "explain": "git add only 'stages' — it picks changes into the staging area. It does not commit or push." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Na čo sa odkazuje zápis 'HEAD~2'?",
+        "options": [
+          "Na úplne prvý commit v repozitári",
+          "Na aktuálny commit (špičku vetvy)",
+          "Na commit o dva commity späť",
+          "Na druhú vetvu vytvorenú v repozitári"],
+        "explain": "HEAD~2 je o dva commity späť od aktuálneho (HEAD~1 je rodič, HEAD je teraz)." },
+      "en": { "q": "What does the notation 'HEAD~2' refer to?",
+        "options": [
+          "The very first commit in the repository",
+          "The current commit (the branch tip)",
+          "The commit two commits back",
+          "The second branch created in the repository"],
+        "explain": "HEAD~2 is two commits back from the current one (HEAD~1 is the parent, HEAD is now)." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Omylom si commitol appsettings.local.json. Pridáš ho do .gitignore — prestane ho Git sledovať?",
+        "options": [
+          "Áno, .gitignore automaticky odstráni aj už commitnuté súbory",
+          "Áno, ale prejaví sa to až po ďalšom commite",
+          "Nie, najprv treba spraviť git push --force",
+          "Nie, treba ho prestať sledovať: git rm --cached"],
+        "explain": ".gitignore platí len na NEsledované súbory. Už commitnutý súbor musíš najprv odstrániť zo sledovania." },
+      "en": { "q": "You accidentally committed appsettings.local.json. You add it to .gitignore — will Git stop tracking it?",
+        "options": [
+          "Yes, .gitignore automatically removes already-committed files too",
+          "Yes, but it only takes effect after the next commit",
+          "No, you must first do a git push --force",
+          "No, you must stop tracking it: git rm --cached"],
+        "explain": ".gitignore applies only to untracked files. An already-committed file must first be removed from tracking." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "V KROSe — ako sa tvoja hotová práca dostane do vetvy master?",
+        "options": [
+          "Push, PR, po schválení sa merge-ne do master",
+          "Priamym pushom svojich commitov rovno do master",
+          "Cherry-pickom konkrétneho commitu do Production",
+          "Spravíš git reset vetvy master na svoju lokálnu vetvu"],
+        "explain": "Odvodíš vetvu, pushneš, otvoríš PR; po schválení sa merge-ne do master. Priamy push do master nie je workflow." },
+      "en": { "q": "At KROS — how does your finished work get into the master branch?",
+        "options": [
+          "Push, PR, after approval it's merged into master",
+          "By pushing your commits straight into master directly",
+          "By cherry-picking a specific commit into Production",
+          "You git reset the master branch onto your local branch"],
+        "explain": "You derive a branch, push, open a PR; after approval it's merged into master. Pushing straight to master isn't the workflow." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Cherry-pickol si opravu do Production. Prečo ju používatelia ešte nevidia?",
+        "options": [
+          "Lebo aj cherry-pick treba najprv schváliť cez Pull Request",
+          "Production sa musí znova nasadiť — spustí to DevOps master",
+          "Lebo zmeny treba pred nasadením ešte raz commitnúť",
+          "Nasadenie prebehne úplne automaticky samo do 24 hodín"],
+        "explain": "Cherry-pick zmení vetvu, ale nič nenasadí. Do produkcie sa dostane až manuálnym re-deployom, ktorý spúšťa DevOps master." },
+      "en": { "q": "You cherry-picked a fix into Production. Why don't users see it yet?",
+        "options": [
+          "Because even a cherry-pick must first be approved via a Pull Request",
+          "Production must be re-deployed — the DevOps master triggers it",
+          "Because the changes must be committed once more before deploy",
+          "The deployment happens fully automatically by itself within 24 hours"],
+        "explain": "A cherry-pick changes the branch but deploys nothing. It reaches production only via a manual re-deploy triggered by the DevOps master." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo je hlavné riziko príkazu 'git reset --hard HEAD~1'?",
+        "options": [
+          "Pošle nechcené commity rovno na remote",
+          "Vytvorí detached HEAD a stratíš vetvu",
+          "Zahodí necommitnuté zmeny vo working tree",
+          "Natrvalo prepíše históriu na zdieľanom remote serveri"],
+        "explain": "--hard prepíše working tree — necommitnuté zmeny sú nenávratne preč. Preto opatrne." },
+      "en": { "q": "What is the main risk of 'git reset --hard HEAD~1'?",
+        "options": [
+          "It pushes unwanted commits straight to the remote",
+          "It creates a detached HEAD and you lose the branch",
+          "It discards uncommitted changes in the working tree",
+          "It permanently rewrites history on the shared remote server"],
+        "explain": "--hard overwrites the working tree — uncommitted changes are gone for good. So use it carefully." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Ktorý prístup spraví históriu lineárnou (akoby si robil od začiatku nad aktuálnym master)?",
+        "options": [
+          "Merge, ktorý vytvorí spoločný merge commit",
+          "git pull spustený bez akýchkoľvek argumentov",
+          "Cherry-pick všetkých commitov po jednom",
+          "Rebase vetvy nad master"],
+        "explain": "Rebase prenesie commity nad špičku master a história ostane lineárna. Merge naopak pridá merge commit." },
+      "en": { "q": "Which approach makes the history linear (as if you'd worked on the current master from the start)?",
+        "options": [
+          "A merge that creates a shared merge commit",
+          "git pull run without any arguments at all",
+          "Cherry-picking all the commits one by one",
+          "Rebasing the branch onto master"],
+        "explain": "Rebase replays commits on top of master's tip and keeps history linear. A merge instead adds a merge commit." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Tvoja vetva je na remote a pracujú na nej aj kolegovia. Prečo ju nerebase-ovať?",
+        "options": [
+          "Rebase prepíše ID commitov a rozbije kópie kolegom",
+          "Rebase je citeľne pomalší ako bežný merge",
+          "Rebase sa principiálne nedá spustiť na remote vetve",
+          "Rebase natrvalo vymaže celú vetvu aj s jej históriou"],
+        "explain": "Rebase prepisuje históriu (nové ID commitov). Na zdieľanej vetve tým rozbiješ kópie ostatným." },
+      "en": { "q": "Your branch is on the remote and colleagues work on it too. Why not rebase it?",
+        "options": [
+          "Rebase rewrites commit IDs and breaks colleagues' copies",
+          "Rebase is noticeably slower than a regular merge",
+          "Rebase fundamentally cannot be run on a remote branch",
+          "Rebase permanently deletes the whole branch and its history"],
+        "explain": "Rebase rewrites history (new commit IDs). On a shared branch that breaks everyone else's copy." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Spravil si commit, no kolega tvoje zmeny stále nevidí. Prečo?",
+        "options": [
+          "Commit zlyhal kvôli pravidlu v .gitignore",
+          "Commit je lokálny — chýba git push",
+          "Treba spraviť git fetch namiesto commitu",
+          "Zmeny sú stále len v staging area, nie v commite"],
+        "explain": "Commit ide len do lokálnej histórie. Kým nespravíš push, na remote (a teda u kolegu) zmeny nie sú." },
+      "en": { "q": "You made a commit, but your colleague still doesn't see your changes. Why?",
+        "options": [
+          "The commit failed because of a .gitignore rule",
+          "The commit is local — git push is missing",
+          "You need to run git fetch instead of committing",
+          "The changes are still only in the staging area, not in a commit"],
+        "explain": "A commit goes only into local history. Until you push, the changes aren't on the remote (so not at the colleague)." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Prečo sú git worktrees užitočné pri práci s AI agentom?",
+        "options": [
+          "Zrýchlia samotné commitovanie a pushovanie zmien",
+          "Automaticky schvaľujú otvorené Pull Requesty",
+          "Umožnia paralelnú prácu na viacerých featúrach naraz",
+          "Zálohujú celý lokálny repozitár na vzdialený server"],
+        "explain": "Každý worktree je iná vetva v inom priečinku — agent môže bežať na viacerých featúrach paralelne bez prepínania." },
+      "en": { "q": "Why are git worktrees useful when working with an AI agent?",
+        "options": [
+          "They speed up committing and pushing changes themselves",
+          "They automatically approve open Pull Requests",
+          "They allow parallel work on several features at once",
+          "They back up the whole local repository to a remote server"],
+        "explain": "Each worktree is a different branch in a different folder — the agent can work on several features in parallel without switching." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Checkoutol si konkrétny commit (nie vetvu) a commitol tam. Si v detached HEAD a chceš prácu zachovať. Čo spravíš?",
+        "options": [
+          "git reset --hard HEAD na aktuálnom mieste",
+          "git push origin HEAD priamo z detached stavu",
+          "git stash a následne prepneš späť na master",
+          "git switch -c nova-vetva"],
+        "explain": "Založením vetvy z aktuálneho miesta (git switch -c) zachytíš commity, ktoré by sa inak v detached HEAD stratili." },
+      "en": { "q": "You checked out a specific commit (not a branch) and committed there. You're in detached HEAD and want to keep the work. What do you do?",
+        "options": [
+          "git reset --hard HEAD at the current location",
+          "git push origin HEAD straight from the detached state",
+          "git stash and then switch back to master",
+          "git switch -c new-branch"],
+        "explain": "Creating a branch from the current spot (git switch -c) captures the commits that would otherwise be lost in detached HEAD." }
+    }
+  ]
+}

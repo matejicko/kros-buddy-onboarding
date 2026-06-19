@@ -1,0 +1,209 @@
+{
+  "pick": 6,
+  "questions": [
+    {
+      "answer": 0,
+      "sk": { "q": "Čo je návrhový vzor?",
+        "options": [
+          "Overené riešenie opakovaného problému a spoločný slovník",
+          "Knižnica, ktorú si pridáš cez NuGet a následne ju voláš",
+          "Kus kódu, ktorý sa kopíruje doslova do každého projektu",
+          "Optimalizácia, ktorú kompilátor spraví sám počas buildu"],
+        "explain": "Vzor je recept a spoločný jazyk tímu — nie hotová knižnica ani konkrétny snippet." },
+      "en": { "q": "What is a design pattern?",
+        "options": [
+          "A proven solution to a recurring problem and shared vocabulary",
+          "A library you add via NuGet and then call from your code",
+          "A snippet of code you copy verbatim into every project",
+          "An optimization the compiler performs by itself at build time"],
+        "explain": "A pattern is a recipe and a team's shared language — not a ready library or a concrete snippet." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo zaručuje Singleton?",
+        "options": [
+          "Novú samostatnú inštanciu pre každého volajúceho",
+          "Že danú triedu vôbec nie je možné zdediť",
+          "Automatickú thread-safety úplne všetkých jeho metód",
+          "Práve jednu zdieľanú inštanciu v celej aplikácii"],
+        "explain": "Singleton = jedna inštancia s globálnym prístupom. Thread-safety musíš zabezpečiť sám." },
+      "en": { "q": "What does a Singleton guarantee?",
+        "options": [
+          "A separate new instance for each individual caller",
+          "That the given class cannot be inherited at all",
+          "Automatic thread-safety of absolutely all of its methods",
+          "Exactly one shared instance across the whole app"],
+        "explain": "Singleton = one instance with global access. Thread-safety you must ensure yourself." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Aká je hlavná nevýhoda ručného static Singletonu?",
+        "options": [
+          "Bez triedy Lazy<T> sa nedá vôbec skompilovať",
+          "Skrýva závislosti a zhoršuje testovateľnosť",
+          "Vždy spôsobí postupný únik pamäte aplikácie",
+          "Beží citeľne pomalšie než úplne bežná trieda"],
+        "explain": "Globálny Instance je skrytá väzba — v teste sa ťažko nahrádza. Preto radšej DI so singleton životnosťou." },
+      "en": { "q": "What is the main downside of a hand-rolled static Singleton?",
+        "options": [
+          "It cannot compile at all without the Lazy<T> type",
+          "It hides dependencies and hurts testability",
+          "It always causes a gradual application memory leak",
+          "It runs noticeably slower than a completely normal class"],
+        "explain": "A global Instance is a hidden binding — hard to replace in tests. Prefer DI with a singleton lifetime." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Builder sa najviac hodí, keď...",
+        "options": [
+          "objekt nemá vôbec žiadne polia ani vlastnosti",
+          "potrebuješ daný objekt pred uložením zašifrovať",
+          "objekt má veľa, často voliteľných parametrov",
+          "konštrukcia objektu má prebiehať paralelne"],
+        "explain": "Builder nahradí teleskopický konštruktor čitateľnými, pomenovanými krokmi." },
+      "en": { "q": "Builder is most useful when...",
+        "options": [
+          "the object has no fields or properties whatsoever",
+          "you need to encrypt the given object before saving",
+          "the object has many, often optional, parameters",
+          "construction of the object should run in parallel"],
+        "explain": "Builder replaces a telescoping constructor with readable, named steps." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Ktoré z toho je príklad Builder vzoru v .NET?",
+        "options": [
+          "Task.Delay",
+          "IEnumerable<T>",
+          "IDisposable",
+          "StringBuilder"],
+        "explain": "StringBuilder (a WebApplication.CreateBuilder) skladajú výsledok krok po kroku — to je Builder." },
+      "en": { "q": "Which of these is an example of the Builder pattern in .NET?",
+        "options": [
+          "Task.Delay",
+          "IEnumerable<T>",
+          "IDisposable",
+          "StringBuilder"],
+        "explain": "StringBuilder (and WebApplication.CreateBuilder) assemble a result step by step — that's Builder." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "V pipeline je výstup jedného kroku...",
+        "options": [
+          "vstupom ďalšieho kroku v poradí",
+          "zahodený hneď po jeho vykonaní",
+          "zapísaný iba do diagnostických logov",
+          "vrátený okamžite späť volajúcemu"],
+        "explain": "Pipeline = reťaz krokov; výstup jedného je vstupom ďalšieho, každý robí jednu vec." },
+      "en": { "q": "In a pipeline, one step's output is...",
+        "options": [
+          "the input of the next step in line",
+          "discarded right after it has run",
+          "written only to diagnostic logs",
+          "returned immediately to the caller"],
+        "explain": "A pipeline is a chain of steps; one's output is the next one's input, each doing one thing." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Aká je kľúčová výhoda rozdelenia do pipeline krokov?",
+        "options": [
+          "Musia všetky nutne bežať na vláknach navyše",
+          "Každý sa dá testovať a preskladať zvlášť",
+          "Úplne odstránia potrebu písať akékoľvek testy",
+          "Vždy výrazne skrátia celkové množstvo kódu"],
+        "explain": "Samostatné kroky znamenajú ľahkú testovateľnosť a flexibilné poradie bez zásahu do ostatných." },
+      "en": { "q": "What is the key benefit of splitting into pipeline steps?",
+        "options": [
+          "They must all necessarily run on extra threads",
+          "Each can be tested and reordered on its own",
+          "They entirely remove the need to write any tests",
+          "They always significantly shorten the total code"],
+        "explain": "Independent steps mean easy testing and flexible ordering without touching the others." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo oddeľuje CQRS?",
+        "options": [
+          "Frontendovú časť od backendovej časti",
+          "Testy od produkčného aplikačného kódu",
+          "Triedy od ich definovaných rozhraní",
+          "Príkazy (zápisy) od dotazov (čítania)"],
+        "explain": "CQRS = Command Query Responsibility Segregation — oddelenie zápisov a čítaní." },
+      "en": { "q": "What does CQRS separate?",
+        "options": [
+          "The frontend part from the backend part",
+          "Tests from the production application code",
+          "Classes from their defined interfaces",
+          "Commands (writes) from queries (reads)"],
+        "explain": "CQRS = Command Query Responsibility Segregation — separating writes from reads." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Ktoré pravidlo CQRS je správne?",
+        "options": [
+          "Dotaz smie počas čítania rovno meniť stav",
+          "Príkaz musí vždy vrátiť zmenenú entitu",
+          "Dotaz len číta, príkaz mení stav",
+          "Príkaz aj dotaz zdieľajú jeden spoločný handler"],
+        "explain": "Query bez vedľajších efektov, command mení stav — miešať ich je mätúce a nebezpečné." },
+      "en": { "q": "Which CQRS rule is correct?",
+        "options": [
+          "A query may change state directly while reading",
+          "A command must always return the changed entity",
+          "A query only reads, a command changes state",
+          "Command and query share one common handler"],
+        "explain": "A query has no side effects, a command changes state — mixing them is confusing and dangerous." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Kde sedí middleware?",
+        "options": [
+          "V rúre spracovania HTTP požiadavky",
+          "Vnútri samotného databázového enginu",
+          "Iba vo frontendovom JavaScript bundli",
+          "V build pipeline projektu počas kompilácie"],
+        "explain": "Každá HTTP požiadavka prejde reťazcom middlewarov tam a odpoveď sa vracia naspäť cez ne." },
+      "en": { "q": "Where does a middleware sit?",
+        "options": [
+          "In the HTTP request processing pipeline",
+          "Inside the database engine itself",
+          "Only in the frontend JavaScript bundle",
+          "In the project's build pipeline during compilation"],
+        "explain": "Every HTTP request passes through a chain of middlewares, and the response travels back through them." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Prečo záleží na poradí middlewarov?",
+        "options": [
+          "Inak sa celá aplikácia vôbec neskompiluje",
+          "Napr. autentifikácia musí byť pred autorizáciou",
+          "Každý middleware nesmie volať ten nasledujúci",
+          "Poradie mení veľkosť výsledného skompilovaného IL"],
+        "explain": "Middlewares bežia v zaregistrovanom poradí — zlé poradie spôsobí ťažko hľadateľné bugy." },
+      "en": { "q": "Why does middleware order matter?",
+        "options": [
+          "Otherwise the whole application won't compile at all",
+          "E.g. authentication must run before authorization",
+          "Each middleware must not call the following one",
+          "The order changes the size of the resulting compiled IL"],
+        "explain": "Middlewares run in their registered order — the wrong order causes hard-to-find bugs." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Kedy je správne vzor NEZAVIESŤ?",
+        "options": [
+          "Keď ho v tíme zatiaľ ešte nikto nepoužil",
+          "Keď jeho použitie navrhol senior vývojár",
+          "Keď problém čisto vyrieši obyčajná metóda",
+          "Keď daná trieda má viac než jednu metódu"],
+        "explain": "Cieľ je jednoduchý kód. Vzor nasilu = overengineering; použi ho, len keď reálne rieši tvoj problém." },
+      "en": { "q": "When is it right to NOT introduce a pattern?",
+        "options": [
+          "When no one on the team has used it so far yet",
+          "When a senior developer suggested using it",
+          "When a plain method already solves it cleanly",
+          "When the given class has more than one method"],
+        "explain": "The goal is simple code. A forced pattern is overengineering; use one only when it genuinely solves your problem." }
+    }
+  ]
+}

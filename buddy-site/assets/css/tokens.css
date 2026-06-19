@@ -1,0 +1,59 @@
+/* KROS brand palette + design tokens (spec §6) */
+:root {
+  /* Brand */
+  --kros-navy: #000A4D;
+  --kros-navy-700: #0A1A6B;     /* lighter navy for hover */
+  --kros-cyan: #5AD3FF;
+  --kros-cyan-600: #2BB4E8;     /* darker cyan for text-on-white contrast */
+  --kros-purple: #66003C;
+  --kros-blue-grey: #D1DBE8;
+  --kros-beige: #F6B696;
+
+  /* Surfaces & ink */
+  --bg: #FFFFFF;
+  --bg-elev: #F4F7FB;
+  --ink: #0A0E27;
+  --ink-muted: #5B6577;
+  --border: #E2E8F0;
+
+  /* Functional */
+  --success: #2BB673;
+  --warn: #F2A93B;
+  --danger: #E5484D;
+
+  /* Gradient (signature KROS look) */
+  --gradient-hero: linear-gradient(135deg, #000A4D 0%, #5AD3FF 100%);
+
+  /* Typography */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+  --fs-h1: 36px;
+  --fs-h2: 24px;
+  --fs-h3: 18px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+
+  /* Spacing / shape */
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --radius-box: 12px;
+  --shadow-card: 0 2px 8px rgba(0, 10, 77, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(0, 10, 77, 0.14);
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px;
+  --space-4: 24px; --space-5: 32px; --space-6: 48px;
+  --header-h: 64px;
+  --maxw: 1120px;
+}
+
+/* Dark theme — overrides surface/ink tokens; brand hues stay the same.
+   Applied via data-theme="dark" on <html> (see theme.js + inline boot script). */
+:root[data-theme="dark"] {
+  --bg: #0B1020;
+  --bg-elev: #141C30;
+  --ink: #E6EDF7;
+  --ink-muted: #9FB0C7;
+  --border: #29344F;
+  --kros-cyan-600: #6FD8FF;          /* brighter cyan for links/stars on dark */
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.6);
+}

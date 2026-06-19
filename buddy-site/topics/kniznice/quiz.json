@@ -1,0 +1,209 @@
+{
+  "pick": 6,
+  "questions": [
+    {
+      "answer": 0,
+      "sk": { "q": "Čo je KORM?",
+        "options": [
+          "Micro-ORM — mapuje C# triedy na databázové tabuľky",
+          "Knižnica na mockovanie závislostí v unit testoch",
+          "CLI nástroj na automatické testovanie HTTP API",
+          "In-memory úložisko typu kľúč–hodnota na rýchle cachovanie"],
+        "explain": "KORM je micro-ORM od KROSu — namiesto ručného SQL píšeš LINQ-style dotazy nad namapovanými triedami." },
+      "en": { "q": "What is KORM?",
+        "options": [
+          "A micro-ORM — maps C# classes to database tables",
+          "A library for mocking dependencies in unit tests",
+          "A CLI tool for automated HTTP API testing",
+          "An in-memory key–value store for caching data"],
+        "explain": "KORM is KROS's micro-ORM — instead of hand-written SQL you write LINQ-style queries over mapped classes." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Na čo slúži NSubstitute?",
+        "options": [
+          "Na mapovanie objektov na databázové tabuľky",
+          "Na mockovanie závislostí (falošná implementácia) v testoch",
+          "Na generovanie PDF faktúr z dát",
+          "Na distribuovanú cache zdieľanú naprieč viacerými inštanciami"],
+        "explain": "NSubstitute vytvorí falošnú implementáciu závislosti, aby si triedu otestoval izolovane bez reálnej DB či siete." },
+      "en": { "q": "What is NSubstitute used for?",
+        "options": [
+          "Mapping objects to database tables",
+          "Mocking dependencies (a fake implementation) in tests",
+          "Generating PDF invoices from data",
+          "A distributed cache across service instances"],
+        "explain": "NSubstitute builds a fake implementation of a dependency so you can test a class in isolation without a real DB or network." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Z ktorej knižnice je atribút [Fact]?",
+        "options": [
+          "NSubstitute",
+          "Kros.KORM",
+          "xUnit",
+          "StackExchange.Redis"],
+        "explain": "[Fact] (a [Theory]/[InlineData]) sú z xUnit — testovacieho frameworku, ktorý spúšťa unit testy." },
+      "en": { "q": "Which library does the [Fact] attribute come from?",
+        "options": [
+          "NSubstitute",
+          "Kros.KORM",
+          "xUnit",
+          "StackExchange.Redis"],
+        "explain": "[Fact] (and [Theory]/[InlineData]) come from xUnit — the testing framework that runs unit tests." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Na čo v projektoch používame Redis?",
+        "options": [
+          "Na písanie a spúšťanie unit testov tried",
+          "Na mapovanie entít na databázové tabuľky",
+          "Na ručné preklikanie HTTP endpointov",
+          "Ako distribuovanú cache (rýchle úložisko)"],
+        "explain": "Redis je rýchle in-memory úložisko; používame ho ako distribuovanú cache, ktorá funguje aj naprieč inštanciami služby." },
+      "en": { "q": "What do we use Redis for in our projects?",
+        "options": [
+          "Writing and running class unit tests",
+          "Mapping entities to database tables",
+          "Manually clicking through HTTP endpoints",
+          "As a distributed cache (fast store)"],
+        "explain": "Redis is a fast in-memory store; we use it as a distributed cache that works across service instances too." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Chceš opakovateľné automatické API testy, ktoré bežia aj v CI. Čo použiješ?",
+        "options": [
+          "TeaPie (.http súbory, CLI)",
+          "Postman ručným klikaním cez grafické rozhranie",
+          "NSubstitute mock celého requestu",
+          "Ručné volanie cez webový prehliadač"],
+        "explain": "TeaPie je CLI framework — API testy ako .http súbory, ktoré bežia automaticky lokálne aj v CI. Postman je skôr na ručné skúšanie." },
+      "en": { "q": "You want repeatable automated API tests that also run in CI. What do you use?",
+        "options": [
+          "TeaPie (.http files, CLI)",
+          "Postman by clicking through the GUI manually",
+          "An NSubstitute mock of the whole request",
+          "A manual call via the web browser"],
+        "explain": "TeaPie is a CLI framework — API tests as .http files that run automatically locally and in CI. Postman is more for manual checks." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Chceš si rýchlo ručne preskúšať jeden endpoint počas vývoja. Čo je najpraktickejšie?",
+        "options": [
+          "Napísať a spustiť nový xUnit test",
+          "Postman (GUI, kolekcie, prostredia)",
+          "Nasadiť zmenu rovno do produkcie",
+          "Vyťažiť dokument cez LLM kanál"],
+        "explain": "Postman je grafický nástroj na rýchle ručné skúšanie endpointov; prostredia držia base URL a tokeny." },
+      "en": { "q": "You want to quickly try one endpoint by hand during development. What's most practical?",
+        "options": [
+          "Write and run a new xUnit test",
+          "Postman (GUI, collections, environments)",
+          "Deploy the change straight to production",
+          "Extract a document via the LLM channel"],
+        "explain": "Postman is a GUI tool for quickly trying endpoints by hand; environments hold the base URL and tokens." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo je Kros.Framework?",
+        "options": [
+          "Open-source micro-ORM od KROSu",
+          "Verejný testovací framework pre .NET",
+          "Interný základný framework KROSu (stavebné bloky)",
+          "Nástroj na automatické vyťažovanie dát z prijatých faktúr"],
+        "explain": "Kros.Framework je interný foundation framework — dátová vrstva, DDD bloky, CQRS, cache… aby služby vyzerali konzistentne." },
+      "en": { "q": "What is Kros.Framework?",
+        "options": [
+          "An open-source micro-ORM by KROS",
+          "A public testing framework for .NET",
+          "KROS's internal foundation framework (building blocks)",
+          "A tool for automatically extracting data from received invoices"],
+        "explain": "Kros.Framework is an internal foundation framework — data layer, DDD blocks, CQRS, caching… so services look consistent." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo robí „vyťažovanie\" (Kros.AI.DataExtraction)?",
+        "options": [
+          "Spúšťa a vyhodnocuje unit testy nad službami",
+          "Cachuje výsledky dotazov v Redise",
+          "Mapuje entity na databázové tabuľky",
+          "Získava štruktúrované dáta z dokumentov"],
+        "explain": "Vyťažovanie získa z dokumentu (faktúry) štruktúrované dáta — cez LLM, ISDOC XML alebo e-faktúry z Finančnej správy." },
+      "en": { "q": "What does 'data extraction' (Kros.AI.DataExtraction) do?",
+        "options": [
+          "Runs and evaluates unit tests over services",
+          "Caches query results in Redis",
+          "Maps entities to database tables",
+          "Gets structured data out of documents"],
+        "explain": "Extraction gets structured data from a document (invoice) — via an LLM, ISDOC XML, or e-invoices from the Financial Administration." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Kde nájdeš centrálne verzie všetkých NuGet balíkov projektu?",
+        "options": [
+          "Directory.Packages.props",
+          "V každom .csproj súbore zvlášť ručne",
+          "V súbore appsettings.json danej služby",
+          "Na internej wiki v sekcii o balíkoch"],
+        "explain": "Projekt používa central package management — všetky verzie sú na jednom mieste v Directory.Packages.props." },
+      "en": { "q": "Where do you find the centralized versions of all the project's NuGet packages?",
+        "options": [
+          "Directory.Packages.props",
+          "In each .csproj file separately by hand",
+          "In the appsettings.json of the given service",
+          "On the internal wiki in the packages section"],
+        "explain": "The project uses central package management — all versions live in one place, Directory.Packages.props." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Kedy sa reálne vykoná KORM dotaz 'Query<License>().Where(...)'?",
+        "options": [
+          "Okamžite pri zavolaní metódy Where v dotaze",
+          "Až pri materializácii (ToList/foreach)",
+          "Hneď pri štarte celej aplikácie",
+          "Nikdy, kým nezavoláš CommitChanges"],
+        "explain": "KORM je lenivý ako LINQ — dotaz sa vyhodnotí až pri materializácii (ToList/foreach), nie pri definícii." },
+      "en": { "q": "When does the KORM query 'Query<License>().Where(...)' actually run?",
+        "options": [
+          "Immediately when Where is called",
+          "Only on materialization (ToList/foreach)",
+          "Right at the start of the whole app",
+          "Never, until you call CommitChanges"],
+        "explain": "KORM is lazy like LINQ — the query evaluates only on materialization (ToList/foreach), not at definition." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Prečo v testoch mockujeme rozhrania (interface), nie konkrétne triedy?",
+        "options": [
+          "Lebo interface beží rýchlejšie",
+          "Lebo to priamo vyžaduje kompilátor",
+          "Aby sme triedu testovali izolovane (vďaka DI)",
+          "Aby sme vôbec nemuseli písať žiadne unit testy navyše"],
+        "explain": "Závislosť cez interface vieš v teste nahradiť mockom — presne to je dôvod, prečo používame Dependency Injection." },
+      "en": { "q": "Why do we mock interfaces in tests, not concrete classes?",
+        "options": [
+          "Because an interface runs faster",
+          "Because the compiler directly requires it",
+          "So we can test the class in isolation (thanks to DI)",
+          "So we don't have to write any tests at all"],
+        "explain": "A dependency behind an interface can be replaced by a mock in a test — exactly why we use Dependency Injection." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo je ISDOC (IsDoc) v kontexte vyťažovania faktúr?",
+        "options": [
+          "Knižnica na mockovanie v unit testoch",
+          "Typ distribuovanej cache v Redise",
+          "CLI nástroj na testovanie API",
+          "Štruktúrovaný XML formát e-faktúry"],
+        "explain": "ISDOC je štruktúrovaný XML formát elektronickej faktúry — jeden z kanálov, z ktorých sa dáta vyťažia priamo." },
+      "en": { "q": "What is ISDOC (IsDoc) in the context of invoice extraction?",
+        "options": [
+          "A library for mocking in unit tests",
+          "A type of distributed cache in Redis",
+          "A CLI tool for API testing",
+          "A structured XML e-invoice format"],
+        "explain": "ISDOC is a structured XML e-invoice format — one of the channels the data is read from directly." }
+    }
+  ]
+}

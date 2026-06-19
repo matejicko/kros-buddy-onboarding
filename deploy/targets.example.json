@@ -1,0 +1,5 @@
+{
+  "_comment": "Copy this file to deploy/targets.json (git-ignored) and fill in real tokens. Each key is a short target name you pass as: pwsh deploy/deploy.ps1 -Target <name>. Get a token from the Azure Portal: your Static Web App > Overview > 'Manage deployment token'. Tokens are secrets — never commit deploy/targets.json.",
+  "backend": { "token": "swa_PASTE_BACKEND_TOKEN_HERE", "label": "Buddy — backend juniors" },
+  "frontend": { "token": "swa_PASTE_FRONTEND_TOKEN_HERE", "label": "Buddy — frontend juniors" }
+}

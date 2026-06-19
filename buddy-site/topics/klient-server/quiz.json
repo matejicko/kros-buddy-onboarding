@@ -1,0 +1,243 @@
+{
+  "pick": 8,
+  "questions": [
+    {
+      "answer": 2,
+      "sk": { "q": "Žiadosť vrátila status 404. Čo to znamená?",
+        "options": [
+          "Server spadol na neošetrenej výnimke",
+          "Nemáš oprávnenie na túto akciu",
+          "Zdroj alebo endpoint neexistuje",
+          "Žiadosť bola úspešná, dáta sú v tele"],
+        "explain": "404 Not Found = hľadaný zdroj/endpoint na serveri neexistuje (často zlá URL)." },
+      "en": { "q": "A request returned status 404. What does it mean?",
+        "options": [
+          "The server crashed on an unhandled exception",
+          "You don't have permission for this action",
+          "The resource or endpoint does not exist",
+          "The request succeeded, the data is in the body"],
+        "explain": "404 Not Found = the requested resource/endpoint doesn't exist on the server (often a wrong URL)." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Dostal si status 500. Kde primárne hľadať problém?",
+        "options": [
+          "Na strane servera (v jeho logoch)",
+          "Vo svojej URL adrese",
+          "V chýbajúcom prihlasovacom tokene",
+          "V nastavení prehliadača na klientovi"],
+        "explain": "5xx je chyba servera — 500 znamená neošetrenú výnimku či pád na backende. Pozri logy servera." },
+      "en": { "q": "You got status 500. Where do you primarily look for the problem?",
+        "options": [
+          "On the server side (in its logs)",
+          "In your own URL address",
+          "In a missing authentication token",
+          "In the browser settings on the client"],
+        "explain": "5xx is a server error — 500 means an unhandled exception or crash on the backend. Check the server logs." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Aký je rozdiel medzi status kódmi 401 a 403?",
+        "options": [
+          "401 znamená úspech, 403 znamená presmerovanie inam",
+          "401 = neprihlásený; 403 = prihlásený, ale bez práv",
+          "Sú to len synonymá pre to isté",
+          "401 je chyba servera, 403 chyba siete"],
+        "explain": "401 = neviem, kto si (chýba/neplatný token). 403 = viem, kto si, ale na túto akciu nemáš právo." },
+      "en": { "q": "What is the difference between status codes 401 and 403?",
+        "options": [
+          "401 means success, 403 means a redirect elsewhere",
+          "401 = not logged in; 403 = logged in but no permission",
+          "They are just synonyms for the same thing",
+          "401 is a server error, 403 a network error"],
+        "explain": "401 = I don't know who you are (missing/invalid token). 403 = I know you, but you're not allowed to do this." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Cez POST si úspešne vytvoril nový zdroj. Aký status očakávaš?",
+        "options": [
+          "404 Not Found",
+          "400 Bad Request",
+          "500 Internal Server Error",
+          "201 Created"],
+        "explain": "201 Created znamená úspešne vytvorený nový zdroj (typická odpoveď po POST)." },
+      "en": { "q": "You successfully created a new resource via POST. What status do you expect?",
+        "options": [
+          "404 Not Found",
+          "400 Bad Request",
+          "500 Internal Server Error",
+          "201 Created"],
+        "explain": "201 Created means a new resource was successfully created (the typical response after POST)." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Frontend hlási chybu. Kde najrýchlejšie zistíš status konkrétnej HTTP žiadosti?",
+        "options": [
+          "V logoch databázy",
+          "V súbore appsettings.json",
+          "V záložke Network (F12)",
+          "V konfigurácii API Gateway"],
+        "explain": "Network v inšpektore (F12) ukáže každú žiadosť aj jej status kód — prvé miesto, kam sa pozrieš." },
+      "en": { "q": "The frontend reports an error. Where do you fastest find the status of a specific HTTP request?",
+        "options": [
+          "In the database logs",
+          "In the appsettings.json file",
+          "In the Network tab (F12)",
+          "In the API Gateway configuration"],
+        "explain": "The Network tab in the inspector (F12) shows every request and its status code — the first place to look." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Kto v bežnej HTTP komunikácii vždy začína (iniciuje)?",
+        "options": [
+          "Klient (pošle žiadosť)",
+          "Server (ozve sa prvý)",
+          "API Gateway sám od seba",
+          "Databáza pri každej zmene dát"],
+        "explain": "V HTTP vždy začína klient. Aby mohol server posielať sám (real-time), treba SignalR." },
+      "en": { "q": "In ordinary HTTP communication, who always starts (initiates)?",
+        "options": [
+          "The client (sends a request)",
+          "The server (speaks up first)",
+          "The API Gateway on its own",
+          "The database on every data change"],
+        "explain": "In HTTP the client always starts. For the server to send on its own (real-time), you need SignalR." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Čo je endpoint?",
+        "options": [
+          "Heslo na prihlásenie do servera",
+          "Konkrétna URL + metóda robiaca jednu vec",
+          "Názov databázovej tabuľky so záznamami",
+          "Trvalé spojenie cez WebSocket na push"],
+        "explain": "Endpoint = adresa (URL) spolu s metódou (GET/POST/...), ktorá vykonáva jednu konkrétnu vec." },
+      "en": { "q": "What is an endpoint?",
+        "options": [
+          "A password for logging into the server",
+          "A specific URL + method doing one thing",
+          "The name of a database table with records",
+          "A persistent WebSocket connection for push"],
+        "explain": "An endpoint = an address (URL) together with a method (GET/POST/...) that does one specific thing." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Chceš, aby server sám tlačil klientovi živé notifikácie, len čo nastanú. Čo použiješ?",
+        "options": [
+          "Opakované GET žiadosti v nekonečnej slučke",
+          "DELETE endpoint na zmazanie záznamu",
+          "Blazor WebAssembly bežiaci v prehliadači",
+          "SignalR (trvalé spojenie)"],
+        "explain": "SignalR drží trvalé spojenie a server môže klientovi posielať správy sám, hneď ako niečo nastane." },
+      "en": { "q": "You want the server to push live notifications to the client the moment they occur. What do you use?",
+        "options": [
+          "Repeated GET requests in an infinite loop",
+          "A DELETE endpoint for removing a record",
+          "Blazor WebAssembly running in the browser",
+          "SignalR (a persistent connection)"],
+        "explain": "SignalR keeps a persistent connection so the server can send messages to the client itself, as soon as something happens." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo umožňuje WebAssembly (Blazor WASM)?",
+        "options": [
+          "Posielať e-maily priamo zo servera",
+          "Real-time push správ smerom ku klientovi",
+          "Spustiť C#/.NET kód priamo v prehliadači",
+          "Smerovať žiadosti na správne mikroslužby"],
+        "explain": "WebAssembly umožní bežať C#/.NET priamo v prehliadači (Blazor WASM) — logiku píšeš v C#, nie v JS." },
+      "en": { "q": "What does WebAssembly (Blazor WASM) enable?",
+        "options": [
+          "Sending e-mails directly from the server",
+          "Real-time push of messages to the client",
+          "Running C#/.NET code directly in the browser",
+          "Routing requests to the right microservices"],
+        "explain": "WebAssembly lets C#/.NET run directly in the browser (Blazor WASM) — you write the logic in C#, not JS." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Status kód v skupine 4xx vo všeobecnosti znamená?",
+        "options": [
+          "Chyba na strane klienta / v žiadosti",
+          "Úspešné spracovanie celej žiadosti",
+          "Chyba výhradne na strane servera",
+          "Presmerovanie žiadosti na inú adresu"],
+        "explain": "4xx = problém v žiadosti (klient). 5xx = problém na serveri. Pri 4xx najprv skontroluj svoju žiadosť." },
+      "en": { "q": "A status code in the 4xx group generally means?",
+        "options": [
+          "An error on the client side / in the request",
+          "Successful processing of the whole request",
+          "An error exclusively on the server side",
+          "A redirect of the request to another address"],
+        "explain": "4xx = a problem in the request (client). 5xx = a problem on the server. For 4xx, check your request first." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "GET /api/invoices/42 a DELETE /api/invoices/42 majú rovnakú cestu. Prečo sú to rôzne endpointy?",
+        "options": [
+          "Lebo majú odlišné poradové číslo",
+          "Endpoint je cesta + metóda spolu",
+          "Lebo bežia na úplne inom serveri",
+          "Lebo DELETE nie je vôbec platná HTTP metóda"],
+        "explain": "Endpoint určuje cesta AJ metóda. Tá istá URL s GET a s DELETE sú dve rôzne operácie." },
+      "en": { "q": "GET /api/invoices/42 and DELETE /api/invoices/42 share the same path. Why are they different endpoints?",
+        "options": [
+          "Because they have a different sequence number",
+          "An endpoint is path + method together",
+          "Because they run on a completely different server",
+          "Because DELETE is not a valid HTTP method at all"],
+        "explain": "An endpoint is defined by the path AND the method. The same URL with GET vs DELETE are two different operations." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Endpoint ti chvíľu vracal 200, teraz zrazu vracia 401. Najpravdepodobnejšia príčina?",
+        "options": [
+          "Server spadol na neošetrenej výnimke",
+          "Máš preklep v ceste URL adresy",
+          "Poslal si priveľa žiadostí za krátky čas",
+          "Vypršal alebo chýba prihlasovací token"],
+        "explain": "401 sa po čase typicky objaví, keď vyprší token. 500 by bol pád servera, 429 priveľa žiadostí." },
+      "en": { "q": "An endpoint returned 200 for a while, now it suddenly returns 401. Most likely cause?",
+        "options": [
+          "The server crashed on an unhandled exception",
+          "You have a typo in the URL path",
+          "You sent too many requests in a short time",
+          "The authentication token expired or is missing"],
+        "explain": "A 401 appearing over time typically means the token expired. A 500 would be a server crash, 429 too many requests." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Čo znamená, že HTTP je bezstavové (stateless)?",
+        "options": [
+          "Server si medzi žiadosťami klienta nepamätá",
+          "Server beží úplne bez databázy",
+          "Klient nesmie posielať telo v žiadosti",
+          "Spojenie zostáva trvalo otvorené medzi žiadosťami"],
+        "explain": "Server medzi žiadosťami nič o klientovi nedrží — preto sa identita posiela zakaždým (napr. token v hlavičke)." },
+      "en": { "q": "What does it mean that HTTP is stateless?",
+        "options": [
+          "The server doesn't remember the client between requests",
+          "The server runs completely without a database",
+          "The client may not send a body in a request",
+          "The connection stays permanently open between requests"],
+        "explain": "The server holds nothing about the client between requests — so identity is sent every time (e.g. a token in the header)." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Na čo slúži záložka Elements v inšpektore prehliadača?",
+        "options": [
+          "Na zoznam všetkých HTTP žiadostí stránky",
+          "Na HTML/DOM a CSS štýly stránky",
+          "Na logy servera a chyby typu 500",
+          "Na nastavenie prihlasovacích tokenov"],
+        "explain": "Elements ukáže aktuálne HTML/DOM a CSS. Sieťové žiadosti a status kódy sú v záložke Network." },
+      "en": { "q": "What is the Elements tab in the browser inspector for?",
+        "options": [
+          "Listing all the page's HTTP requests",
+          "The page's HTML/DOM and CSS styles",
+          "Server logs and 500-type errors",
+          "Configuring authentication tokens"],
+        "explain": "Elements shows the current HTML/DOM and CSS. Network requests and status codes are in the Network tab." }
+    }
+  ]
+}

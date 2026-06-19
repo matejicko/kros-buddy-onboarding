@@ -1,0 +1,107 @@
+{
+  "pick": 4,
+  "questions": [
+    {
+      "answer": 2,
+      "sk": { "q": "Načo sú konvencie kódu (coding conventions)?",
+        "options": [
+          "Aby kód bežal výrazne rýchlejšie za behu",
+          "Aby sa zmenšila veľkosť výsledného .dll súboru",
+          "Aby kód tímu vyzeral jednotne a dobre sa čítal",
+          "Aby sa unit testy generovali automaticky samé"],
+        "explain": "Konvencie zjednotia štýl celého tímu — kód sa potom ľahšie číta, reviewuje a udržiava." },
+      "en": { "q": "What are coding conventions for?",
+        "options": [
+          "To make the code run significantly faster at runtime",
+          "To reduce the size of the resulting .dll file",
+          "So the team's code looks uniform and reads well",
+          "So unit tests get generated automatically on their own"],
+        "explain": "Conventions unify the whole team's style — the code is then easier to read, review, and maintain." }
+    },
+    {
+      "answer": 0,
+      "sk": { "q": "Čo je ADR (Architecture Decision Record)?",
+        "options": [
+          "Krátky záznam dôležitého rozhodnutia a jeho dôvodov",
+          "Nástroj na automatické formátovanie celého zdrojového kódu",
+          "Typ indexu v relačnej databáze",
+          "Pravidlo na pomenúvanie lokálnych premenných"],
+        "explain": "ADR zachytí kontext, rozhodnutie a jeho dôsledky — aby tím o mesiace vedel PREČO sa tak rozhodlo." },
+      "en": { "q": "What is an ADR (Architecture Decision Record)?",
+        "options": [
+          "A short record of an important decision and its reasons",
+          "A tool for automatically formatting the entire source code",
+          "A type of index in a relational database",
+          "A rule for naming local variables"],
+        "explain": "An ADR captures the context, the decision, and its consequences — so months later the team knows WHY it was decided." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Kde nájdeš pravidlá štýlu kódu (formátovanie, pomenúvanie)?",
+        "options": [
+          "V privátnom ADR repozitári s rozhodnutiami",
+          "V tímovej SharePoint / OneNote wiki",
+          "V konfigurácii databázy projektu",
+          "V súbore coding-style.md na GitHube"],
+        "explain": "Štýl kódu je v coding-style.md na GitHube. ADR repozitár a wiki riešia iné veci (rozhodnutia, praktiky)." },
+      "en": { "q": "Where do you find the code style rules (formatting, naming)?",
+        "options": [
+          "In the private ADR repository with decisions",
+          "In the team SharePoint / OneNote wiki",
+          "In the project's database configuration",
+          "In the coding-style.md file on GitHub"],
+        "explain": "Code style lives in coding-style.md on GitHub. The ADR repo and the wiki are for other things (decisions, practices)." }
+    },
+    {
+      "answer": 1,
+      "sk": { "q": "Kto ti pridelí prístup do privátneho ADR repozitára?",
+        "options": [
+          "Mentor cez tímovú SharePoint wiki",
+          "Milan Martiniak (access grant)",
+          "GitHub automaticky po registrácii",
+          "Nikto — repozitár je úplne verejný"],
+        "explain": "ADR repozitár je privátny — prihlás sa súkromným GitHub účtom a o prístup požiadaj Milana Martiniaka." },
+      "en": { "q": "Who grants you access to the private ADR repository?",
+        "options": [
+          "A mentor via the team SharePoint wiki",
+          "Milan Martiniak (an access grant)",
+          "GitHub automatically after you register",
+          "No one — the repository is fully public"],
+        "explain": "The ADR repo is private — sign in with your personal GitHub account and ask Milan Martiniak for access." }
+    },
+    {
+      "answer": 3,
+      "sk": { "q": "Čo NEpatrí do ADR?",
+        "options": [
+          "Kontext daného rozhodnutia",
+          "Samotné prijaté rozhodnutie",
+          "Dôsledky daného rozhodnutia",
+          "Pravidlá odsadenia kódu"],
+        "explain": "ADR opisuje rozhodnutie (kontext / rozhodnutie / dôsledky). Odsadenie a formátovanie patria do štýlu kódu." },
+      "en": { "q": "What does NOT belong in an ADR?",
+        "options": [
+          "The context of the decision",
+          "The decision that was made",
+          "The consequences of the decision",
+          "Code indentation rules"],
+        "explain": "An ADR describes a decision (context / decision / consequences). Indentation and formatting belong to code style." }
+    },
+    {
+      "answer": 2,
+      "sk": { "q": "Čo obsahuje tímová SharePoint wiki?",
+        "options": [
+          "Iba zoznam všetkých zamestnancov firmy",
+          "Verejný open-source zdrojový kód celého KROSu",
+          "Dobré praktiky, novinky a konvencie tímu",
+          "Privátne architektonické rozhodnutia (ADR)"],
+        "explain": "Wiki drží tímové dobré praktiky, novinky a konvencie. ADR sú zvlášť v repozitári Kros.ADR." },
+      "en": { "q": "What does the team SharePoint wiki contain?",
+        "options": [
+          "Only a list of all the company's employees",
+          "The public open-source source code of all KROS",
+          "Team good practices, updates, and conventions",
+          "The private architecture decisions (ADRs)"],
+        "explain": "The wiki holds team good practices, updates, and conventions. ADRs are separate, in the Kros.ADR repository." }
+    }
+  ]
+}

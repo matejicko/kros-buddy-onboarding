@@ -1,0 +1,57 @@
+{
+  "async": {
+    "term_sk": "async/await", "term_en": "async/await",
+    "def_sk": "Spôsob písania neblokujúceho kódu — metóda sa na await pozastaví a vráti riadenie volajúcemu.",
+    "def_en": "A way to write non-blocking code — a method suspends at await and returns control to the caller."
+  },
+  "di": {
+    "term_sk": "Dependency Injection", "term_en": "Dependency Injection",
+    "def_sk": "Závislosti sa objektu dodajú zvonku (cez konštruktor) namiesto toho, aby si ich vytváral sám.",
+    "def_en": "Dependencies are supplied from outside (via the constructor) instead of being created internally."
+  },
+  "ienumerable": {
+    "term_sk": "IEnumerable", "term_en": "IEnumerable",
+    "def_sk": "Lenivá sekvencia — vyhodnotí sa až pri iterácii (materializácii cez ToList/foreach).",
+    "def_en": "A lazy sequence — evaluated only when iterated (materialized via ToList/foreach)."
+  },
+  "task": {
+    "term_sk": "Task / Task<T>", "term_en": "Task / Task<T>",
+    "def_sk": "Objekt reprezentujúci prebiehajúcu (alebo dokončenú) asynchrónnu operáciu. Task<T> navyše nesie výsledok typu T.",
+    "def_en": "An object representing an in-progress (or completed) asynchronous operation. Task<T> additionally carries a result of type T."
+  },
+  "threadpool": {
+    "term_sk": "Thread pool", "term_en": "Thread pool",
+    "def_sk": "Zásoba znovupoužiteľných vlákien, ktoré runtime spravuje. Async kód po await pokračuje typicky na vlákne z tohto poolu.",
+    "def_en": "A pool of reusable threads managed by the runtime. After await, async code typically resumes on a thread from this pool."
+  },
+  "deadlock": {
+    "term_sk": "Deadlock", "term_en": "Deadlock",
+    "def_sk": "Zaseknutie, keď dve operácie navzájom čakajú jedna na druhú a ani jedna sa nepohne ďalej.",
+    "def_en": "A freeze where two operations each wait on the other and neither can proceed."
+  },
+  "deferred": {
+    "term_sk": "Deferred execution", "term_en": "Deferred execution",
+    "def_sk": "Odložené vyhodnotenie — LINQ dotaz sa nevykoná pri definovaní, ale až keď ho začneš iterovať.",
+    "def_en": "Deferred evaluation — a LINQ query doesn't run when defined, only when you start iterating it."
+  },
+  "multiple-enumeration": {
+    "term_sk": "Multiple enumeration", "term_en": "Multiple enumeration",
+    "def_sk": "Viacnásobné prejdenie tej istej IEnumerable — dotaz sa zakaždým vykoná nanovo (možný výkonnostný problém).",
+    "def_en": "Iterating the same IEnumerable more than once — the query re-runs every time (a potential performance problem)."
+  },
+  "gof": {
+    "term_sk": "GoF (Gang of Four)", "term_en": "GoF (Gang of Four)",
+    "def_sk": "Štvorica autorov knihy Design Patterns (1994), ktorá pomenovala 23 klasických objektovo-orientovaných návrhových vzorov.",
+    "def_en": "The four authors of the book Design Patterns (1994), which named 23 classic object-oriented design patterns."
+  },
+  "cqrs": {
+    "term_sk": "CQRS", "term_en": "CQRS",
+    "def_sk": "Command Query Responsibility Segregation — oddelenie operácií, ktoré menia stav (commands), od tých, ktoré len čítajú (queries).",
+    "def_en": "Command Query Responsibility Segregation — separating operations that change state (commands) from those that only read (queries)."
+  },
+  "middleware": {
+    "term_sk": "Middleware", "term_en": "Middleware",
+    "def_sk": "Komponent v rúre spracovania HTTP požiadavky; požiadavka prejde reťazcom middlewarov a odpoveď sa vracia naspäť cez ne.",
+    "def_en": "A component in the HTTP request pipeline; a request passes through a chain of middlewares and the response travels back through them."
+  }
+}
